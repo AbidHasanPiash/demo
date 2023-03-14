@@ -11,6 +11,7 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isChecked, setIsChecked] = useState(false);
+    const [loginError, setLoginError] = useState(null);
     // Check if either name or email field is empty
     const isDisabled = password.trim() === '' || email.trim() === '';
 
@@ -27,8 +28,17 @@ export default function Login() {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorCode);
-            console.log(errorMessage);
+            console.log('code :', errorCode);
+            console.log('msge :', errorMessage);
+            if (error.code === 'auth/user-not-found') {
+                setLoginError("User not found !!");
+            }
+            else if (error.code === 'auth/internal-error') {
+                setLoginError('Connection Error !!')
+            }
+            else {
+                setLoginError(null);
+            }
         });
     }
   return (
@@ -60,6 +70,10 @@ export default function Login() {
                         value={password} 
                         onChange={(e) => setPassword(e.target.value)} 
                         className="outline-none focus:ring-1 rounded-md  w-full py-2 pl-3 pr-3" />
+                </div>
+                {/* Error message */}
+                <div>
+                    {loginError && <p className='text-gray-600 text-center ring ring-yellow-500 rounded'>{loginError}</p>}
                 </div>
                 {/* Submit button */}
                 <div className='flex space-x-3 items-center justify-between'>

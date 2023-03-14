@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { AiOutlineMail, AiOutlineLock } from 'react-icons/ai';
-import { BsFacebook, BsGoogle } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 
 export default function Login() {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isChecked, setIsChecked] = useState(false);
@@ -13,6 +13,7 @@ export default function Login() {
     const handleSubmit = (event) => {
     event.preventDefault();
     console.log(`Email: ${email}, Pass: ${password}, checked: ${isChecked}`);
+    navigate('/');
     }
   return (
     <div className='flex flex-col items-center justify-center w-screen h-screen bg-gray-200'>
@@ -57,22 +58,7 @@ export default function Login() {
                         Submit
                     </button>
                 </div>
-                {/* Sign in with others */}
-                <p className='text-gray-400 text-center py-1'>- OR -</p>
-                <button className='relative bg-blue-500 rounded py-2 text-white hover:bg-blue-600'>
-                    <span className="absolute inset-y-0 left-0 pl-10 flex items-center">
-                        <BsFacebook className="w-6 h-6 text-gray-50" />
-                    </span>
-                    Sign up using Facebook
-                </button>
-                <button className='relative bg-rose-500 rounded py-2 text-white hover:bg-rose-600'>
-                <span className="absolute inset-y-0 left-0 pl-10 flex items-center">
-                        <BsGoogle className="w-6 h-6 text-gray-50" />
-                    </span>
-                    Sign up using Google
-                </button>
                 <Link to={'/forgotPassword'} className='text-blue-600'>I forgot my password</Link>
-                <Link to={'/signup'} className='text-blue-600'>Register a new membership</Link>
             </form>
         </div>
     </div>

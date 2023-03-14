@@ -39,7 +39,6 @@ export default function ForgotPassword() {
                 </button>
                 {/* Other options */}
                 <Link to={'/login'} className='text-blue-600'>Login</Link>
-                <Link to={'/signup'} className='text-blue-600'>Register a new membership</Link>
             </form>
         </div>
     </div>

@@ -23,7 +23,7 @@ export default function Home() {
         navigate('/login');
       }
     });
-  },[]);
+  },[navigate]);
   const Logout = () => {
     signOut(auth).then(() => {
       // Sign-out successful.

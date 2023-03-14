@@ -2,6 +2,10 @@ import { useState } from 'react';
 import { AiOutlineMail, AiOutlineLock } from 'react-icons/ai';
 import { Link, useNavigate} from 'react-router-dom';
 
+//Authentication
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../Firebase';
+
 export default function Login() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
@@ -12,8 +16,20 @@ export default function Login() {
 
     const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`Email: ${email}, Pass: ${password}, checked: ${isChecked}`);
-    navigate('/');
+    // console.log(`Email: ${email}, Pass: ${password}, checked: ${isChecked}`);
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            console.log(user);
+            navigate('/');
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode);
+            console.log(errorMessage);
+        });
     }
   return (
     <div className='flex flex-col items-center justify-center w-screen h-screen bg-gray-200'>

@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard";
 import Login from "./auth/Login";
 import Signup from "./auth/Signup";
 import ForgotPassword from "./auth/ForgotPassword";
@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route>
-          <Route index element={<Home/>} />
+          <Route index element={<Dashboard/>} />
           <Route exact  path="/login" element={<Login />} />
           <Route exact  path="/signup" element={<Signup />} />
           <Route exact  path="/forgotPassword" element={<ForgotPassword />} />

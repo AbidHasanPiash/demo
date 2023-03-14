@@ -73,13 +73,13 @@ export default function Login() {
                 </div>
                 {/* Error message */}
                 <div>
-                    {loginError && <p className='text-gray-600 text-center ring ring-yellow-500 rounded'>{loginError}</p>}
+                    {loginError && !isDisabled && <p className='text-gray-600 text-center ring ring-yellow-500 rounded'>{loginError}</p>}
                 </div>
                 {/* Submit button */}
                 <div className='flex space-x-3 items-center justify-between'>
                     <div className='flex space-x-3'>
                         <input type="checkbox" name="" id="" onChange={()=>setIsChecked(!isChecked)} className='w-5'/>
-                        <p className='text-gray-600 font-semibold'>Remember Me</p>
+                        <p className='text-gray-500 font-semibold'>Remember Me</p>
                     </div>
                     <button 
                         type="submit" 

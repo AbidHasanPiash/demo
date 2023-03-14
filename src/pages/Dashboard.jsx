@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { auth } from '../Firebase'
 
-export default function Home() {
+export default function Dashboard() {
   const navigate = useNavigate();
   const [authUser, setAuthUser] = useState(null);
   useEffect(()=>{

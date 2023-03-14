@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 //Authentication
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { auth } from '../Firebase'
+import Header from '../components/Header';
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ export default function Dashboard() {
 
   return (
     <div className='flex flex-col items-center justify-center h-screen space-y-10'>
+        <Header/>
         <h1>Home page</h1>
         <h1>{authUser ? <p>Welcome {authUser.email}</p> : <p>Please Login</p> }</h1>
         <button

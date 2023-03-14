@@ -24,6 +24,7 @@ export default function Login() {
             const user = userCredential.user;
             console.log(user);
             navigate('/');
+            setLoginError(null);
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -73,7 +74,7 @@ export default function Login() {
                 </div>
                 {/* Error message */}
                 <div>
-                    {loginError && !isDisabled && <p className='text-gray-600 text-center ring ring-yellow-500 rounded'>{loginError}</p>}
+                    {loginError && <p className='text-gray-600 text-center ring ring-yellow-500 rounded'>{loginError}</p>}
                 </div>
                 {/* Submit button */}
                 <div className='flex space-x-3 items-center justify-between'>
@@ -90,6 +91,11 @@ export default function Login() {
                 </div>
                 <Link to={'/forgotPassword'} className='text-blue-600'>I forgot my password</Link>
             </form>
+        </div>
+        
+        <div className=' flex flex-col items-center justify-center mt-16 text-gray-400'>
+            <h1>Temp Text</h1>
+            <p>test@test.com</p>
         </div>
     </div>
   )

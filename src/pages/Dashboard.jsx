@@ -11,7 +11,6 @@ export default function Dashboard() {
 
   const navigate = useNavigate();
   const [authUser, setAuthUser] = useState(null);
-
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -25,12 +24,8 @@ export default function Dashboard() {
 
   const Logout = () => {
     signOut(auth)
-      .then(() => {
-        navigate("/login");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      .then(() => { navigate("/login"); })
+      .catch((error) => { console.log(error); });
   };
 
   const [activeTab, setAtciveTab] = useState(null);

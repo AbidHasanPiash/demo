@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
+import SidebarDemo from "../components/SidebarDemo";
 
 //Authentication
 import { onAuthStateChanged, signOut } from "firebase/auth";
@@ -36,7 +36,7 @@ export default function Dashboard() {
   return (
     <div className="flex w-screen">
       <div className="">
-        <Sidebar tab = {handleActiveTab}/>
+        <SidebarDemo tab = {handleActiveTab}/>
       </div>
       <div className="w-screen">
         <div className="flex flex-col">
@@ -44,7 +44,7 @@ export default function Dashboard() {
           <div>
             <h1>Home page</h1>
             <h1> {authUser ? <p>Welcome {authUser.email}</p> : <p>Please Login</p>} </h1>
-            <h1>{activeTab}</h1>
+            <h1 className="text-6xl">{activeTab}</h1>
             <button
               onClick={Logout}
               className="rounded-md py-2 px-6 bg-blue-500 hover:bg-blue-600 text-white"

@@ -11,6 +11,7 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isChecked, setIsChecked] = useState(false);
+    const [loginError, setLoginError] = useState(null);
     // Check if either name or email field is empty
     const isDisabled = password.trim() === '' || email.trim() === '';
 
@@ -23,12 +24,22 @@ export default function Login() {
             const user = userCredential.user;
             console.log(user);
             navigate('/');
+            setLoginError(null);
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorCode);
-            console.log(errorMessage);
+            console.log('code :', errorCode);
+            console.log('msge :', errorMessage);
+            if (error.code === 'auth/user-not-found') {
+                setLoginError("User not found !!");
+            }
+            else if (error.code === 'auth/internal-error') {
+                setLoginError('Connection Error !!')
+            }
+            else {
+                setLoginError(null);
+            }
         });
     }
   return (
@@ -61,11 +72,15 @@ export default function Login() {
                         onChange={(e) => setPassword(e.target.value)} 
                         className="outline-none focus:ring-1 rounded-md  w-full py-2 pl-3 pr-3" />
                 </div>
+                {/* Error message */}
+                <div>
+                    {loginError && <p className='text-gray-600 text-center ring ring-yellow-500 rounded'>{loginError}</p>}
+                </div>
                 {/* Submit button */}
                 <div className='flex space-x-3 items-center justify-between'>
                     <div className='flex space-x-3'>
                         <input type="checkbox" name="" id="" onChange={()=>setIsChecked(!isChecked)} className='w-5'/>
-                        <p className='text-gray-600 font-semibold'>Remember Me</p>
+                        <p className='text-gray-500 font-semibold'>Remember Me</p>
                     </div>
                     <button 
                         type="submit" 
@@ -76,6 +91,11 @@ export default function Login() {
                 </div>
                 <Link to={'/forgotPassword'} className='text-blue-600'>I forgot my password</Link>
             </form>
+        </div>
+        
+        <div className=' flex flex-col items-center justify-center mt-16 text-gray-400'>
+            <h1>Temp Text</h1>
+            <p>test@test.com</p>
         </div>
     </div>
   )

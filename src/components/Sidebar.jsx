@@ -68,13 +68,11 @@ export default function Sidebar({tab}) {
     <nav>
       <ul>
         {menuItems.map(item=>(
-          <li 
-            id='mainItem'
+          <li
             key={item.id} 
-            onClick={(e)=>{
+            onClick={()=>{
                 if (!item.subItems) {
                   handleMenuItemClick(item.name);
-                  console.log(e.target.id)
                 }
                 else {
                   setIsExpand(!isExpand);
@@ -92,10 +90,9 @@ export default function Sidebar({tab}) {
             {item.subItems && (
               <ul className={`${isExpand ? 'block' : 'hidden'} ml-4 mt-2 transition-all duration-500 ease-in-out`}>
                 {item.subItems.map((child) => (
-                  <li 
-                  id='subItem'
+                  <li
                   key={child.id}
-                  onClick={()=>{handleMenuItemClick(child.name)}}>
+                  onClick={()=>{setIsExpand(false); handleMenuItemClick(child.name);}}>
                     <span className={`${ activeTab === child.name ? 'bg-blue-500' : 'hover:bg-gray-800' } text-lg space-x-2 p-2 rounded flex items-center justify-start`}>
                       <div>{child.icon}</div>
                       <p>{child.name}</p>

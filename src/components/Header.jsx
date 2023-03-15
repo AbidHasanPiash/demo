@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
+import { fullScreen } from './FullScreen'
 import {RiMenuFoldFill,RiMenuUnfoldFill, RiMessageLine, RiSearch2Line} from 'react-icons/ri'
-import {HiOutlineBell, HiArrowsExpand} from 'react-icons/hi'
+import {BiBell, BiExpand, BiCollapse} from 'react-icons/bi'
 
 export default function Header() {
+    const [isFullScreen, setIsFullScreen] = useState(false);
     const [menuClicked, setMenuclicked] = useState(false);
   return (
     <header className='w-full'>
@@ -22,8 +24,8 @@ export default function Header() {
                 <div className='flex space-x-8'>
                     <button> <RiSearch2Line/> </button>
                     <button> <RiMessageLine/> </button>
-                    <button> <HiOutlineBell/> </button>
-                    <button> <HiArrowsExpand/> </button>
+                    <button> <BiBell/> </button>
+                    <button onClick={()=>fullScreen(isFullScreen, setIsFullScreen)}> {isFullScreen ? <BiCollapse/> : <BiExpand/>} </button>
                 </div>
             </div>
         </div>

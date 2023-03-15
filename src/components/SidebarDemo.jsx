@@ -105,13 +105,13 @@ export default function SidebarDemo({tab}) {
             <li key={item.id} >
               <span 
               onClick={()=>handleMenuItemClick(item)} 
-              className={`${ mainActiveTab === item.name ? 'bg-blue-500' : 'hover:bg-gray-800' } flex items-center justify-start cursor-pointer rounded my-1 p-2 space-x-2`}>
+              className={`${ mainActiveTab === item.name ? 'bg-blue-500 text-white' : 'hover:bg-gray-800' } flex items-center justify-start cursor-pointer rounded my-1 p-2 space-x-2`}>
                 <i className=''>{item.icon}</i>
                 <p>{item.name}</p>
                 {item.subItems && <RiArrowLeftSLine/> }
               </span>
               {item.subItems && item.subItems.map(subItem=>(
-                <div key={subItem.id} className={` ${isExpand ? 'block' : 'hidden'} pl-3`}>
+                <div key={subItem.id} className={` ${ mainActiveTab && isExpand ? 'block' : 'hidden'} pl-3`}>
                   <span 
                   onClick={()=>handleSubMenuItemClick(subItem)} 
                   className={`${ subActiveTab === subItem.name ? 'bg-neutral-500' : 'hover:bg-gray-800' } flex items-center justify-start cursor-pointer rounded my-1 p-2 space-x-2`}>

@@ -11,7 +11,7 @@ export default function SidebarItem({item, tab, aTab, isSidebarOpen}){
         return (
             <li>
                 <div onClick={() => setExpand(!expand)}>
-                    <span className={`hover:bg-gray-700 flex items-center justify-between cursor-pointer rounded my-1 p-2 select-none`}>
+                    <span className={`hover:bg-gray-700 flex items-center justify-between cursor-pointer rounded my-1 p-3 select-none`}>
                         
                             <div className="flex items-center justify-center space-x-2">
                                 <i className=''>{item.icon}</i>
@@ -25,7 +25,7 @@ export default function SidebarItem({item, tab, aTab, isSidebarOpen}){
                         <div key={index} onClick={()=>handleTab(child)}>
                             <Link to={child.link ? child.link : '#'}>
                                 <span
-                                    className={`hover:bg-gray-700 flex items-center justify-start cursor-pointer rounded my-1 p-2 space-x-2 select-none`}>
+                                    className={`hover:bg-gray-700 flex items-center justify-start cursor-pointer rounded my-1 p-3 space-x-2 select-none`}>
                                     <i className=''>{child.icon}</i>
                                     <p className={`${isSidebarOpen ? 'block' : 'scale-0'} duration-300`}>{child.name}</p>  
                                 </span>
@@ -40,7 +40,7 @@ export default function SidebarItem({item, tab, aTab, isSidebarOpen}){
             <li onClick={()=>handleTab(item)}>
                 <Link to={item.link ? item.link : '#'}>
                     <span
-                        className={`hover:bg-gray-700 flex items-center justify-start cursor-pointer rounded my-1 p-2 space-x-2 select-none`}>
+                        className={`hover:bg-gray-700 flex items-center justify-start cursor-pointer rounded my-1 p-3 space-x-2 select-none`}>
                         <i className=''>{item.icon}</i>
                         <p className={`${isSidebarOpen ? 'block' : 'scale-0'} duration-300`}>{item.name}</p>
                     </span>

@@ -10,7 +10,7 @@ export default function Home() {
     setAtciveTab(tab);
   }
   //passing data from Header to Sidebar
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
     <div className="flex w-screen">

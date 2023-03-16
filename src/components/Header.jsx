@@ -6,7 +6,7 @@ import {BiBell, BiExpand, BiCollapse} from 'react-icons/bi'
 
 export default function Header({setIsSidebarOpen}) {
     const [isFullScreen, setIsFullScreen] = useState(false);
-    const [menuClicked, setMenuclicked] = useState(false);
+    const [menuClicked, setMenuclicked] = useState(true);
   return (
     <header className='w-full'>
         <div className='px-6 py-3 text-xl text-gray-700 shadow-md'>

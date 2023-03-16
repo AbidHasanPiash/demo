@@ -71,7 +71,7 @@ export default function Sidebar({tab, isSidebarOpen}) {
     <aside className={`bg-gray-800 text-gray-300 duration-300 ${isSidebarOpen? 'w-64' : 'w-20'} h-screen px-2`}>
       <div>
         {/* Company profile */}
-        <div className='flex items-center justify-start border-b border-gray-500 space-x-2 p-3 pl-4'>
+        <div className={`flex items-center justify-start border-b border-gray-500 space-x-2 p-3 pl-3`}>
           <img 
             className='w-8 rounded-full ring-2 ring-white'
             src={logo} 
@@ -82,7 +82,7 @@ export default function Sidebar({tab, isSidebarOpen}) {
           </div>
         </div>
         {/* User profile */}
-        <div className='flex items-center justify-between border-b border-gray-500 p-4 pl-4'>
+        <div className='flex items-center justify-between border-b border-gray-500 p-4 pl-3'>
           <div className='flex items-center justify-start space-x-2'>
             <img 
               className='w-8 rounded-full'
@@ -113,7 +113,7 @@ export default function Sidebar({tab, isSidebarOpen}) {
           </div>
         </div>
         {/* Search section */}
-        <div className={`${isSidebarOpen ? 'block' : 'hidden'} duration-300 flex items-center justify-start border border-gray-500 my-4 rounded`}>
+        <div className={`${isSidebarOpen ? 'block' : 'hidden'} duration-300 flex items-center justify-start border border-gray-500 my-3 rounded`}>
           <input 
             type="text" 
             placeholder='Search' 

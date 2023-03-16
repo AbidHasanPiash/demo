@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
 import logo from '../media/logo.png'
 import profile from '../media/profile.png'
 import {HiOutlineBell, HiOutlineLogout} from 'react-icons/hi'
@@ -6,7 +7,34 @@ import {RiSearch2Line} from 'react-icons/ri'
 import {CiMenuKebab, CiEdit} from 'react-icons/ci'
 import SidebarItem from './SidebarItem';
 
+//Authentication
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../Firebase";
+
 export default function Sidebar({tab}) {
+
+  
+
+  const navigate = useNavigate();
+  const [authUser, setAuthUser] = useState(null);
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setAuthUser(user);
+      } else {
+        setAuthUser(null);
+        navigate("/login");
+      }
+    });
+  }, [navigate]);
+
+  const Logout = () => {
+    signOut(auth)
+      .then(() => { navigate("/login"); })
+      .catch((error) => { console.log(error); });
+  };
+
+
   const [activeTab, setAtciveTab] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const handleMenuItemClick = (t) => {
@@ -86,7 +114,7 @@ export default function Sidebar({tab}) {
               src={profile} 
               alt="profile" 
             />
-            <h1 className='text-lg'>Elon Musk</h1>
+            <h1 className='text-lg'>{authUser ? <p>{authUser.email}</p> : <p>Please Login</p>}</h1>
           </div>
           <div className="relative inline-block text-right">
             <CiMenuKebab onClick={()=>setIsOpen(!isOpen)} className='cursor-pointer hover:scale-125 duration-200'/>
@@ -96,7 +124,7 @@ export default function Sidebar({tab}) {
               aria-labelledby="options-menu"
             >
               <div className="flex items-center justify-end space-x-3 hover:bg-slate-800 px-2 py-1 mx-2 my-1 rounded-lg" role="none">
-                  <p>Log Out</p>
+                  <p onClick={Logout}>Log Out</p>
                   <HiOutlineLogout/>
               </div>
               <div className="flex items-center justify-end space-x-3 hover:bg-slate-800 px-2 py-1 mx-2 my-1 rounded-lg" role="none">

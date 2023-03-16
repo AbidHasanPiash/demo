@@ -4,9 +4,9 @@ import { fullScreen } from './FullScreen'
 import {RiMenuFoldFill,RiMenuUnfoldFill, RiMessageLine, RiSearch2Line} from 'react-icons/ri'
 import {BiBell, BiExpand, BiCollapse} from 'react-icons/bi'
 
-export default function Header() {
+export default function Header({setIsSidebarOpen}) {
     const [isFullScreen, setIsFullScreen] = useState(false);
-    const [menuClicked, setMenuclicked] = useState(false);
+    const [menuClicked, setMenuclicked] = useState(true);
   return (
     <header className='w-full'>
         <div className='px-6 py-3 text-xl text-gray-700 shadow-md'>
@@ -14,9 +14,9 @@ export default function Header() {
                 <div className='relative flex space-x-20'>
                     <div>
                         {menuClicked ? 
-                            <RiMenuFoldFill onClick={()=>setMenuclicked(!menuClicked)} className="absolute left-0 pl-3 w-8 h-8 cursor-pointer" /> 
+                            <RiMenuFoldFill onClick={()=>{setIsSidebarOpen(!menuClicked); setMenuclicked(!menuClicked);}} className="absolute left-0 pl-3 w-8 h-8 cursor-pointer" /> 
                             :
-                            <RiMenuUnfoldFill onClick={()=>setMenuclicked(!menuClicked)} className="absolute left-0 pl-3 w-8 h-8 cursor-pointer" />
+                            <RiMenuUnfoldFill onClick={()=>{setIsSidebarOpen(!menuClicked); setMenuclicked(!menuClicked);}} className="absolute left-0 pl-3 w-8 h-8 cursor-pointer" />
                         }
                     </div>
                     <Link to={'/'}>Home</Link>

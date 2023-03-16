@@ -2,19 +2,25 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import logo from '../media/logo.png'
 import profile from '../media/profile.png'
-import {HiOutlineBell, HiOutlineLogout} from 'react-icons/hi'
-import {RiSearch2Line} from 'react-icons/ri'
-import {CiMenuKebab, CiEdit} from 'react-icons/ci'
 import SidebarItem from './SidebarItem';
+
+//React Icons
+import {HiOutlineLogout, HiOutlineShoppingBag} from 'react-icons/hi'
+import {RiSearch2Line, RiBuilding2Line} from 'react-icons/ri'
+import {RxDashboard} from 'react-icons/rx'
+import {GiMedicines} from 'react-icons/gi'
+import {BsBox, BsPeople} from 'react-icons/bs'
+import {MdOutlinePlaylistAddCheckCircle, MdOutlineSettingsSuggest, MdOutlineCategory} from 'react-icons/md'
+import {TbReportSearch, TbBrandProducthunt, TbBabyBottle, TbTruckDelivery} from 'react-icons/tb'
+import {CiMenuKebab, CiEdit} from 'react-icons/ci'
 
 //Authentication
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../Firebase";
 
-export default function Sidebar({tab}) {
+export default function Sidebar({tab, isSidebarOpen}) {
 
-  
-
+  //Check user is login or not
   const navigate = useNavigate();
   const [authUser, setAuthUser] = useState(null);
   useEffect(() => {
@@ -43,78 +49,50 @@ export default function Sidebar({tab}) {
   }
 
   const menuItems = [
-    {
-      id:1, 
-      name:'Dashboard', 
-      icon:<HiOutlineBell/>
-    },
-    {
-      id:2, 
-      name:'Report', 
-      icon:<HiOutlineBell/>
-    },
-    {
-      id:3, 
-      name:'Products', 
-      icon:<HiOutlineBell/>,
+    { id:1, name:'Dashboard', link:'/dashboard', icon:<RxDashboard size={22}/> },
+    { id:2, name:'Report',  link:'/report', icon:<TbReportSearch size={22}/> },
+    { id:3, name:'Products', icon:<TbBrandProducthunt size={22}/>, 
       subItems:[
-        {id:1, name:'Pharmacy', icon:<HiOutlineBell/>},
-        {id:2, name:'Non-Pharmacy', icon:<HiOutlineBell/>}
-      ]
-    },
-    {
-      id:4, 
-      name:'Order', 
-      icon:<HiOutlineBell/>
-    },
-    {
-      id:5, 
-      name:'Purchase', 
-      icon:<HiOutlineBell/>
-    },
-    {
-      id:6, 
-      name:'Setup', 
-      icon:<HiOutlineBell/>,
+        {id:1, name:'Pharmacy', link:'/pharmacy',  icon:<GiMedicines size={22}/>},
+        {id:2, name:'Non-Pharmacy', link:'/non-pharmacy', icon:<TbBabyBottle size={22}/>}
+      ]},
+    { id:4, name:'Order', link:'/order', icon:<MdOutlinePlaylistAddCheckCircle size={22}/> },
+    { id:5, name:'Purchase', link:'/purchase', icon:<HiOutlineShoppingBag size={22}/> },
+    { id:6, name:'Setup', icon:<MdOutlineSettingsSuggest size={22}/>, 
       subItems:[
-        {id:1, name:'Category', icon:<HiOutlineBell/>},
-        {id:2, name:'Box', icon:<HiOutlineBell/>}
-      ]
-    },
-    {
-      id:7, 
-      name:'Company', 
-      icon:<HiOutlineBell/>
-    },
-    {
-      id:8, 
-      name:'Suplier', 
-      icon:<HiOutlineBell/>},
-    {
-      id:9, 
-      name:'Employe', 
-      icon:<HiOutlineBell/>
-    }
+        {id:1, name:'Category', link:'/category',  icon:<MdOutlineCategory size={22}/>},
+        {id:2, name:'Box', link:'/box', icon:<BsBox size={22}/>}
+      ]},
+    { id:7, name:'Company', link:'/company', icon:<RiBuilding2Line size={22}/> },
+    { id:8, name:'Suplier', link:'/suplier', icon:<TbTruckDelivery size={22}/>},
+    { id:9, name:'Employe', link:'/employe', icon:<BsPeople size={22}/> }
   ]
   return (
-    <aside className="bg-gray-800 text-gray-300 w-64 h-screen px-2">
+    <aside className={`bg-gray-800 text-gray-300 duration-300 ${isSidebarOpen? 'w-64' : 'w-20'} h-screen px-2`}>
       <div>
-        <div className='flex items-center justify-start border-b border-gray-500 space-x-2 p-3 pl-4'>
+        {/* Company profile */}
+        <div className={`flex items-center justify-start border-b border-gray-500 space-x-2 p-3 pl-3`}>
           <img 
             className='w-8 rounded-full ring-2 ring-white'
             src={logo} 
             alt="profile" 
           />
-          <h1 className='text-xl font-semibold'>CreativeHI <span className='text-sm text-gray-400'>demo</span></h1>
+          <div className={`${isSidebarOpen ? 'block' : 'scale-0'} duration-300`}>
+            <h1 className='text-xl font-semibold'>CreativeHI <span className='text-sm text-gray-400'>demo</span></h1>
+          </div>
         </div>
-        <div className='flex items-center justify-between border-b border-gray-500 p-4 pl-4'>
+        {/* User profile */}
+        <div className='flex items-center justify-between border-b border-gray-500 p-4 pl-3'>
           <div className='flex items-center justify-start space-x-2'>
             <img 
               className='w-8 rounded-full'
               src={profile} 
               alt="profile" 
             />
-            <h1 className='text-lg'>{authUser ? <p>{authUser.email}</p> : <p>Please Login</p>}</h1>
+            <div className={`${isSidebarOpen ? 'block' : 'scale-0'} duration-300`}>
+              <h1 className='text-lg'>{authUser ? <p>{authUser.email}</p> : <p>Please Login</p>}</h1>
+            </div>
+            
           </div>
           <div className="relative inline-block text-right">
             <CiMenuKebab onClick={()=>setIsOpen(!isOpen)} className='cursor-pointer hover:scale-125 duration-200'/>
@@ -134,7 +112,8 @@ export default function Sidebar({tab}) {
             </div>
           </div>
         </div>
-        <div className='flex items-center justify-start border border-gray-500 my-4 rounded'>
+        {/* Search section */}
+        <div className={`${isSidebarOpen ? 'block' : 'hidden'} duration-300 flex items-center justify-start border border-gray-500 my-3 rounded`}>
           <input 
             type="text" 
             placeholder='Search' 
@@ -142,18 +121,19 @@ export default function Sidebar({tab}) {
           <RiSearch2Line className='w-14 text-white '/>
         </div>
       </div>
-    <nav>
-      <ul className='flex flex-col'>
-        {menuItems.map((item, index) => 
-          <SidebarItem
-            key={index} 
-            item={item} 
-            tab = {handleMenuItemClick} 
-            aTab = {activeTab}
-          />
-        ) }
-      </ul>
-    </nav>
-  </aside>
+      <nav>
+        <ul className='flex flex-col'>
+          {menuItems.map((item, index) => 
+            <SidebarItem
+              key={index} 
+              item={item} 
+              tab = {handleMenuItemClick} 
+              aTab = {activeTab}
+              isSidebarOpen = {isSidebarOpen}
+            />
+          ) }
+        </ul>
+      </nav>
+    </aside>
   )
 }

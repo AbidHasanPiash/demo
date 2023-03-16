@@ -1,8 +1,9 @@
 import { useState} from "react";
+import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 
-export default function Dashboard() {
+export default function Home() {
 
   const [activeTab, setAtciveTab] = useState('Dashboard');
   const handleActiveTab = (tab) => {
@@ -19,6 +20,7 @@ export default function Dashboard() {
           <Header />
           <div className="bg-gray-100 flex flex-col items-center justify-center">
             <h1>{activeTab}</h1>
+            <Outlet/>
           </div>
         </div>
       </div>

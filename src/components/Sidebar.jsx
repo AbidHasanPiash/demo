@@ -13,8 +13,7 @@ import { auth } from "../Firebase";
 
 export default function Sidebar({tab}) {
 
-  
-
+  //Check user is login or not
   const navigate = useNavigate();
   const [authUser, setAuthUser] = useState(null);
   useEffect(() => {
@@ -42,59 +41,29 @@ export default function Sidebar({tab}) {
     setAtciveTab(t);
   }
 
+  // const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const handleMenuOpen = (open) => {
+  //   open? setIsMenuOpen(true) : setIsMenuOpen(false);
+  // }
+
   const menuItems = [
-    {
-      id:1, 
-      name:'Dashboard', 
-      icon:<HiOutlineBell/>
-    },
-    {
-      id:2, 
-      name:'Report', 
-      icon:<HiOutlineBell/>
-    },
-    {
-      id:3, 
-      name:'Products', 
-      icon:<HiOutlineBell/>,
+    { id:1, name:'Dashboard', link:'/dashboard', icon:<HiOutlineBell/> },
+    { id:2, name:'Report',  link:'/report', icon:<HiOutlineBell/> },
+    { id:3, name:'Products', icon:<HiOutlineBell/>, 
       subItems:[
-        {id:1, name:'Pharmacy', icon:<HiOutlineBell/>},
-        {id:2, name:'Non-Pharmacy', icon:<HiOutlineBell/>}
-      ]
-    },
-    {
-      id:4, 
-      name:'Order', 
-      icon:<HiOutlineBell/>
-    },
-    {
-      id:5, 
-      name:'Purchase', 
-      icon:<HiOutlineBell/>
-    },
-    {
-      id:6, 
-      name:'Setup', 
-      icon:<HiOutlineBell/>,
+        {id:1, name:'Pharmacy', link:'/pharmacy',  icon:<HiOutlineBell/>},
+        {id:2, name:'Non-Pharmacy', link:'/non-pharmacy', icon:<HiOutlineBell/>}
+      ]},
+    { id:4, name:'Order', link:'/order', icon:<HiOutlineBell/> },
+    { id:5, name:'Purchase', link:'/purchase', icon:<HiOutlineBell/> },
+    { id:6, name:'Setup', icon:<HiOutlineBell/>, 
       subItems:[
-        {id:1, name:'Category', icon:<HiOutlineBell/>},
-        {id:2, name:'Box', icon:<HiOutlineBell/>}
-      ]
-    },
-    {
-      id:7, 
-      name:'Company', 
-      icon:<HiOutlineBell/>
-    },
-    {
-      id:8, 
-      name:'Suplier', 
-      icon:<HiOutlineBell/>},
-    {
-      id:9, 
-      name:'Employe', 
-      icon:<HiOutlineBell/>
-    }
+        {id:1, name:'Category', link:'/category',  icon:<HiOutlineBell/>},
+        {id:2, name:'Box', link:'/box', icon:<HiOutlineBell/>}
+      ]},
+    { id:7, name:'Company', link:'/company', icon:<HiOutlineBell/> },
+    { id:8, name:'Suplier', link:'/suplier', icon:<HiOutlineBell/>},
+    { id:9, name:'Employe', link:'/employe', icon:<HiOutlineBell/> }
   ]
   return (
     <aside className="bg-gray-800 text-gray-300 w-64 h-screen px-2">
@@ -142,18 +111,18 @@ export default function Sidebar({tab}) {
           <RiSearch2Line className='w-14 text-white '/>
         </div>
       </div>
-    <nav>
-      <ul className='flex flex-col'>
-        {menuItems.map((item, index) => 
-          <SidebarItem
-            key={index} 
-            item={item} 
-            tab = {handleMenuItemClick} 
-            aTab = {activeTab}
-          />
-        ) }
-      </ul>
-    </nav>
-  </aside>
+      <nav>
+        <ul className='flex flex-col'>
+          {menuItems.map((item, index) => 
+            <SidebarItem
+              key={index} 
+              item={item} 
+              tab = {handleMenuItemClick} 
+              aTab = {activeTab}
+            />
+          ) }
+        </ul>
+      </nav>
+    </aside>
   )
 }

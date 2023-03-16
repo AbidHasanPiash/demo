@@ -1,14 +1,47 @@
-import React, { useState } from 'react'
-import {HiOutlineBell} from 'react-icons/hi'
-import {RiArrowLeftSLine} from 'react-icons/ri'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
+import logo from '../media/logo.png'
+import profile from '../media/profile.png'
+import {HiOutlineBell, HiOutlineLogout} from 'react-icons/hi'
+import {RiSearch2Line} from 'react-icons/ri'
+import {CiMenuKebab, CiEdit} from 'react-icons/ci'
+import SidebarItem from './SidebarItem';
+
+//Authentication
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../Firebase";
 
 export default function Sidebar({tab}) {
-  const [activeTab, setActiveTab] = useState('Dashboard');
-  const [isExpand, setIsExpand] = useState(false);
+
+  
+
+  const navigate = useNavigate();
+  const [authUser, setAuthUser] = useState(null);
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setAuthUser(user);
+      } else {
+        setAuthUser(null);
+        navigate("/login");
+      }
+    });
+  }, [navigate]);
+
+  const Logout = () => {
+    signOut(auth)
+      .then(() => { navigate("/login"); })
+      .catch((error) => { console.log(error); });
+  };
+
+
+  const [activeTab, setAtciveTab] = useState({});
+  const [isOpen, setIsOpen] = useState(false);
   const handleMenuItemClick = (t) => {
-    setActiveTab(t);
-    tab(t);
+    tab(t.name);
+    setAtciveTab(t);
   }
+
   const menuItems = [
     {
       id:1, 
@@ -64,47 +97,61 @@ export default function Sidebar({tab}) {
     }
   ]
   return (
-    <aside className="bg-gray-700 text-gray-300 w-64 h-screen px-2 py-6">
+    <aside className="bg-gray-800 text-gray-300 w-64 h-screen px-2">
+      <div>
+        <div className='flex items-center justify-start border-b border-gray-500 space-x-2 p-3 pl-4'>
+          <img 
+            className='w-8 rounded-full ring-2 ring-white'
+            src={logo} 
+            alt="profile" 
+          />
+          <h1 className='text-xl font-semibold'>CreativeHI <span className='text-sm text-gray-400'>demo</span></h1>
+        </div>
+        <div className='flex items-center justify-between border-b border-gray-500 p-4 pl-4'>
+          <div className='flex items-center justify-start space-x-2'>
+            <img 
+              className='w-8 rounded-full'
+              src={profile} 
+              alt="profile" 
+            />
+            <h1 className='text-lg'>{authUser ? <p>{authUser.email}</p> : <p>Please Login</p>}</h1>
+          </div>
+          <div className="relative inline-block text-right">
+            <CiMenuKebab onClick={()=>setIsOpen(!isOpen)} className='cursor-pointer hover:scale-125 duration-200'/>
+            <div className={`absolute right-0 mt-2 w-56 rounded border bg-slate-700 select-none ${isOpen ? 'block' : 'hidden' }`}
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="options-menu"
+            >
+              <div className="flex items-center justify-end space-x-3 hover:bg-slate-800 px-2 py-1 mx-2 my-1 rounded-lg" role="none">
+                  <p onClick={Logout}>Log Out</p>
+                  <HiOutlineLogout/>
+              </div>
+              <div className="flex items-center justify-end space-x-3 hover:bg-slate-800 px-2 py-1 mx-2 my-1 rounded-lg" role="none">
+                  <p>Change Password</p>
+                  <CiEdit/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className='flex items-center justify-start border border-gray-500 my-4 rounded'>
+          <input 
+            type="text" 
+            placeholder='Search' 
+            className='w-full h-9 bg-gray-600 rounded-l outline-none pl-2 border-r border-gray-500 focus:ring-1'/>
+          <RiSearch2Line className='w-14 text-white '/>
+        </div>
+      </div>
     <nav>
-      <ul>
-        {menuItems.map(item=>(
-          <li
-            key={item.id} 
-            onClick={()=>{
-                if (!item.subItems) {
-                  handleMenuItemClick(item.name);
-                }
-                else {
-                  setIsExpand(!isExpand);
-                }
-              }} 
-          >
-            <span className={`${ activeTab === item.name ? 'bg-blue-500' : 'hover:bg-gray-800' } text-lg space-x-2 p-2 rounded flex items-center justify-start`}>
-              <div>{item.icon}</div>
-              <p>{item.name}</p>
-              {item.subItems && <i>
-                <RiArrowLeftSLine className={`${isExpand ? '-rotate-90' : ''}`}/>
-              </i>}
-            </span>
-            
-            {item.subItems && (
-              <ul className={`${isExpand ? 'block' : 'hidden'} ml-4 mt-2 transition-all duration-500 ease-in-out`}>
-                {item.subItems.map((child) => (
-                  <li
-                  key={child.id}
-                  onClick={()=>{setIsExpand(false); handleMenuItemClick(child.name);}}>
-                    <span className={`${ activeTab === child.name ? 'bg-blue-500' : 'hover:bg-gray-800' } text-lg space-x-2 p-2 rounded flex items-center justify-start`}>
-                      <div>{child.icon}</div>
-                      <p>{child.name}</p>
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-
-
-          </li>
-        ))}
+      <ul className='flex flex-col'>
+        {menuItems.map((item, index) => 
+          <SidebarItem
+            key={index} 
+            item={item} 
+            tab = {handleMenuItemClick} 
+            aTab = {activeTab}
+          />
+        ) }
       </ul>
     </nav>
   </aside>

@@ -14,15 +14,14 @@ export default function SidebarDemo({tab}) {
     setMainActiveTab(mainItem.name);
     !mainItem.subItems && tab(mainItem.name);
     !mainItem.subItems && setSubActiveTab(null);
-    mainItem.subItems && setIsExpand(!isExpand);
+    //mainItem.subItems && setIsExpand(!isExpand);
+    (mainItem.subItems && (mainActiveTab === mainItem.name)) && setIsExpand(!isExpand);
+    console.log(mainItem.name);
   }
   const handleSubMenuItemClick = (subItem) => {
     tab(subItem.name);
     setSubActiveTab(subItem.name);
   }
-
-  console.log(mainActiveTab, subActiveTab);
-
   //Menu Items
   const menuItems = [
     {
@@ -103,17 +102,19 @@ export default function SidebarDemo({tab}) {
         <ul>
           {menuItems.map(item=>(
             <li key={item.id} >
+
               <span 
-              onClick={()=>handleMenuItemClick(item)} 
+              onClick={()=>{handleMenuItemClick(item);}} 
               className={`${ mainActiveTab === item.name ? 'bg-blue-500 text-white' : 'hover:bg-gray-800' } flex items-center justify-start cursor-pointer rounded my-1 p-2 space-x-2`}>
                 <i className=''>{item.icon}</i>
                 <p>{item.name}</p>
                 {item.subItems && <RiArrowLeftSLine/> }
               </span>
+
               {item.subItems && item.subItems.map(subItem=>(
-                <div key={subItem.id} className={` ${ mainActiveTab && isExpand ? 'block' : 'hidden'} pl-3`}>
+                <div key={subItem.id} className={` ${isExpand ? 'block' : 'hidden'} pl-3`}>
                   <span 
-                  onClick={()=>handleSubMenuItemClick(subItem)} 
+                  onClick={()=>{handleSubMenuItemClick(subItem)}} 
                   className={`${ subActiveTab === subItem.name ? 'bg-neutral-500' : 'hover:bg-gray-800' } flex items-center justify-start cursor-pointer rounded my-1 p-2 space-x-2`}>
                     <i className=''>{subItem.icon}</i>
                     <p>{subItem.name}</p>

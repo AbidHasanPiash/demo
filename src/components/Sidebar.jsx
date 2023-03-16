@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import {HiOutlineBell} from 'react-icons/hi'
-import {RiArrowLeftSLine} from 'react-icons/ri'
+import SidebarItem from './SidebarItem';
 
 export default function Sidebar({tab}) {
-  const [activeTab, setActiveTab] = useState('Dashboard');
-  const [isExpand, setIsExpand] = useState(false);
+  const [activeTab, setAtciveTab] = useState({});
   const handleMenuItemClick = (t) => {
-    setActiveTab(t);
-    tab(t);
+    tab(t.name);
+    setAtciveTab(t);
   }
+
   const menuItems = [
     {
       id:1, 
@@ -66,45 +66,15 @@ export default function Sidebar({tab}) {
   return (
     <aside className="bg-gray-700 text-gray-300 w-64 h-screen px-2 py-6">
     <nav>
-      <ul>
-        {menuItems.map(item=>(
-          <li
-            key={item.id} 
-            onClick={()=>{
-                if (!item.subItems) {
-                  handleMenuItemClick(item.name);
-                }
-                else {
-                  setIsExpand(!isExpand);
-                }
-              }} 
-          >
-            <span className={`${ activeTab === item.name ? 'bg-blue-500' : 'hover:bg-gray-800' } text-lg space-x-2 p-2 rounded flex items-center justify-start`}>
-              <div>{item.icon}</div>
-              <p>{item.name}</p>
-              {item.subItems && <i>
-                <RiArrowLeftSLine className={`${isExpand ? '-rotate-90' : ''}`}/>
-              </i>}
-            </span>
-            
-            {item.subItems && (
-              <ul className={`${isExpand ? 'block' : 'hidden'} ml-4 mt-2 transition-all duration-500 ease-in-out`}>
-                {item.subItems.map((child) => (
-                  <li
-                  key={child.id}
-                  onClick={()=>{setIsExpand(false); handleMenuItemClick(child.name);}}>
-                    <span className={`${ activeTab === child.name ? 'bg-blue-500' : 'hover:bg-gray-800' } text-lg space-x-2 p-2 rounded flex items-center justify-start`}>
-                      <div>{child.icon}</div>
-                      <p>{child.name}</p>
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
-
-
-          </li>
-        ))}
+      <ul className='flex flex-col'>
+        {menuItems.map((item, index) => 
+          <SidebarItem
+            key={index} 
+            item={item} 
+            tab = {handleMenuItemClick} 
+            aTab = {activeTab}
+          />
+        ) }
       </ul>
     </nav>
   </aside>

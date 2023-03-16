@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import logo from '../media/logo.png'
 import profile from '../media/profile.png'
-import {HiOutlineBell} from 'react-icons/hi'
+import {HiOutlineBell, HiOutlineLogout} from 'react-icons/hi'
 import {RiSearch2Line} from 'react-icons/ri'
+import {CiMenuKebab, CiEdit} from 'react-icons/ci'
 import SidebarItem from './SidebarItem';
 
 export default function Sidebar({tab}) {
   const [activeTab, setAtciveTab] = useState({});
+  const [isOpen, setIsOpen] = useState(false);
   const handleMenuItemClick = (t) => {
     tab(t.name);
     setAtciveTab(t);
@@ -77,13 +79,32 @@ export default function Sidebar({tab}) {
           />
           <h1 className='text-xl font-semibold'>CreativeHI <span className='text-sm text-gray-400'>demo</span></h1>
         </div>
-        <div className='flex items-center justify-start border-b border-gray-500 space-x-2 p-4 pl-4'>
-          <img 
-            className='w-8 rounded-full'
-            src={profile} 
-            alt="profile" 
-          />
-          <h1 className='text-lg'>Elon Musk</h1>
+        <div className='flex items-center justify-between border-b border-gray-500 p-4 pl-4'>
+          <div className='flex items-center justify-start space-x-2'>
+            <img 
+              className='w-8 rounded-full'
+              src={profile} 
+              alt="profile" 
+            />
+            <h1 className='text-lg'>Elon Musk</h1>
+          </div>
+          <div className="relative inline-block text-right">
+            <CiMenuKebab onClick={()=>setIsOpen(!isOpen)} className='cursor-pointer hover:scale-125 duration-200'/>
+            <div className={`absolute right-0 mt-2 w-56 rounded border bg-slate-700 select-none ${isOpen ? 'block' : 'hidden' }`}
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="options-menu"
+            >
+              <div className="flex items-center justify-end space-x-3 hover:bg-slate-800 px-2 py-1 mx-2 my-1 rounded-lg" role="none">
+                  <p>Log Out</p>
+                  <HiOutlineLogout/>
+              </div>
+              <div className="flex items-center justify-end space-x-3 hover:bg-slate-800 px-2 py-1 mx-2 my-1 rounded-lg" role="none">
+                  <p>Change Password</p>
+                  <CiEdit/>
+              </div>
+            </div>
+          </div>
         </div>
         <div className='flex items-center justify-start border border-gray-500 my-4 rounded'>
           <input 

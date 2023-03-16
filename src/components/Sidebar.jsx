@@ -67,7 +67,7 @@ export default function Sidebar({tab}) {
     }
   ]
   return (
-    <aside className="bg-gray-700 text-gray-300 w-64 h-screen px-2 py-6">
+    <aside className="bg-gray-800 text-gray-300 w-64 h-screen px-2">
       <div>
         <div className='flex items-center justify-start border-b border-gray-500 space-x-2 p-3 pl-4'>
           <img 
@@ -89,7 +89,7 @@ export default function Sidebar({tab}) {
           <input 
             type="text" 
             placeholder='Search' 
-            className='w-full h-8 bg-gray-600 rounded-l outline-none pl-2 border-r border-gray-500 focus:ring-1'/>
+            className='w-full h-9 bg-gray-600 rounded-l outline-none pl-2 border-r border-gray-500 focus:ring-1'/>
           <RiSearch2Line className='w-14 text-white '/>
         </div>
       </div>

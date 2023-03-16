@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-//import SidebarDemo from "../components/SidebarDemo";
 import Sidebar from "../components/Sidebar";
 
 //Authentication

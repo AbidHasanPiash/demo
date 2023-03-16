@@ -22,7 +22,7 @@ export default function SidebarItem({item, tab, aTab}){
         return (
             <li>
                 <div onClick={() => setExpand(!expand)}>
-                    <span className={`hover:bg-gray-600 flex items-center justify-between cursor-pointer rounded my-1 p-2`}>
+                    <span className={`hover:bg-gray-700 flex items-center justify-between cursor-pointer rounded my-1 p-2 select-none`}>
                         <div className="flex items-center justify-center space-x-2">
                             <i className=''>{item.icon}</i>
                             <p>{item.name}</p>
@@ -34,7 +34,7 @@ export default function SidebarItem({item, tab, aTab}){
                     { item.subItems.map((child, index) =>
                         <div key={index} onClick={()=>handleTab(child)}>
                             <span
-                                className={`hover:bg-gray-800 flex items-center justify-start cursor-pointer rounded my-1 p-2 space-x-2`}>
+                                className={`hover:bg-gray-700 flex items-center justify-start cursor-pointer rounded my-1 p-2 space-x-2 select-none`}>
                                 <i className=''>{child.icon}</i>
                                 <p>{child.name}</p>  
                             </span>
@@ -47,7 +47,7 @@ export default function SidebarItem({item, tab, aTab}){
         return (
             <li onClick={()=>handleTab(item)}>
                 <span
-                    className={`hover:bg-gray-800 flex items-center justify-start cursor-pointer rounded my-1 p-2 space-x-2`}>
+                    className={`hover:bg-gray-700 flex items-center justify-start cursor-pointer rounded my-1 p-2 space-x-2 select-none`}>
                     <i className=''>{item.icon}</i>
                     <p>{item.name}</p>
                 </span>

@@ -2,23 +2,11 @@ import { useState } from "react"
 import {RiArrowLeftSLine} from 'react-icons/ri'
 import { Link } from "react-router-dom";
 
-export default function SidebarItem({item, tab, aTab}){
+export default function SidebarItem({item, tab, aTab, isSidebarOpen}){
     const [expand, setExpand] = useState(false);
     const handleTab = (t) => {
         tab(t);
     }
-    // const [mainActiveTab, setMainAtciveTab] = useState(null);
-    // const [subActiveTab, setSubAtciveTab] = useState(null);
-    // const handleMenuItemClick = (mainItem) => {
-    //     tab(mainItem.name);
-    //     setMainAtciveTab(mainItem.name);
-    //     console.log('main: ', mainActiveTab);
-    // }
-    // const handleSubMenuItemClick = (subItem) => {
-    //     tab(subItem.name);
-    //     setSubAtciveTab(subItem.name);
-    //     console.log('sub: ', subActiveTab);
-    // }
     if(item.subItems){
         return (
             <li>
@@ -27,19 +15,19 @@ export default function SidebarItem({item, tab, aTab}){
                         
                             <div className="flex items-center justify-center space-x-2">
                                 <i className=''>{item.icon}</i>
-                                <p>{item.name}</p>
+                                <p className={`${isSidebarOpen ? 'block' : 'scale-0'} duration-300`}>{item.name}</p>
                             </div>
-                        <RiArrowLeftSLine/>  
+                        <RiArrowLeftSLine size={22}  className={`${isSidebarOpen ? 'block' : 'scale-0'} duration-300 ${expand && '-rotate-90'}`}/>  
                     </span> 
                 </div>
-                <div className={`${expand ? "block" : "hidden"}  pl-3`}>
+                <div className={`${isSidebarOpen && expand ? "block" : "hidden"}  pl-3`}>
                     { item.subItems.map((child, index) =>
                         <div key={index} onClick={()=>handleTab(child)}>
                             <Link to={child.link ? child.link : '#'}>
                                 <span
                                     className={`hover:bg-gray-700 flex items-center justify-start cursor-pointer rounded my-1 p-2 space-x-2 select-none`}>
                                     <i className=''>{child.icon}</i>
-                                    <p>{child.name}</p>  
+                                    <p className={`${isSidebarOpen ? 'block' : 'scale-0'} duration-300`}>{child.name}</p>  
                                 </span>
                             </Link>
                         </div>
@@ -54,7 +42,7 @@ export default function SidebarItem({item, tab, aTab}){
                     <span
                         className={`hover:bg-gray-700 flex items-center justify-start cursor-pointer rounded my-1 p-2 space-x-2 select-none`}>
                         <i className=''>{item.icon}</i>
-                        <p>{item.name}</p>
+                        <p className={`${isSidebarOpen ? 'block' : 'scale-0'} duration-300`}>{item.name}</p>
                     </span>
                 </Link>
                 

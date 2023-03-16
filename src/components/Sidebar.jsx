@@ -11,7 +11,7 @@ import SidebarItem from './SidebarItem';
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../Firebase";
 
-export default function Sidebar({tab}) {
+export default function Sidebar({tab, isSidebarOpen}) {
 
   //Check user is login or not
   const navigate = useNavigate();
@@ -41,11 +41,6 @@ export default function Sidebar({tab}) {
     setAtciveTab(t);
   }
 
-  // const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // const handleMenuOpen = (open) => {
-  //   open? setIsMenuOpen(true) : setIsMenuOpen(false);
-  // }
-
   const menuItems = [
     { id:1, name:'Dashboard', link:'/dashboard', icon:<HiOutlineBell/> },
     { id:2, name:'Report',  link:'/report', icon:<HiOutlineBell/> },
@@ -66,16 +61,20 @@ export default function Sidebar({tab}) {
     { id:9, name:'Employe', link:'/employe', icon:<HiOutlineBell/> }
   ]
   return (
-    <aside className="bg-gray-800 text-gray-300 w-64 h-screen px-2">
+    <aside className={`bg-gray-800 text-gray-300 duration-300 ${isSidebarOpen? 'w-64' : 'w-20'} h-screen px-2`}>
       <div>
+        {/* Company profile */}
         <div className='flex items-center justify-start border-b border-gray-500 space-x-2 p-3 pl-4'>
           <img 
             className='w-8 rounded-full ring-2 ring-white'
             src={logo} 
             alt="profile" 
           />
-          <h1 className='text-xl font-semibold'>CreativeHI <span className='text-sm text-gray-400'>demo</span></h1>
+          <div className={`${isSidebarOpen ? 'block' : 'scale-0'} duration-300`}>
+            <h1 className='text-xl font-semibold'>CreativeHI <span className='text-sm text-gray-400'>demo</span></h1>
+          </div>
         </div>
+        {/* User profile */}
         <div className='flex items-center justify-between border-b border-gray-500 p-4 pl-4'>
           <div className='flex items-center justify-start space-x-2'>
             <img 
@@ -83,7 +82,10 @@ export default function Sidebar({tab}) {
               src={profile} 
               alt="profile" 
             />
-            <h1 className='text-lg'>{authUser ? <p>{authUser.email}</p> : <p>Please Login</p>}</h1>
+            <div className={`${isSidebarOpen ? 'block' : 'scale-0'} duration-300`}>
+              <h1 className='text-lg'>{authUser ? <p>{authUser.email}</p> : <p>Please Login</p>}</h1>
+            </div>
+            
           </div>
           <div className="relative inline-block text-right">
             <CiMenuKebab onClick={()=>setIsOpen(!isOpen)} className='cursor-pointer hover:scale-125 duration-200'/>
@@ -103,7 +105,8 @@ export default function Sidebar({tab}) {
             </div>
           </div>
         </div>
-        <div className='flex items-center justify-start border border-gray-500 my-4 rounded'>
+        {/* Search section */}
+        <div className={`${isSidebarOpen ? 'block' : 'hidden'} duration-300 flex items-center justify-start border border-gray-500 my-4 rounded`}>
           <input 
             type="text" 
             placeholder='Search' 
@@ -119,6 +122,7 @@ export default function Sidebar({tab}) {
               item={item} 
               tab = {handleMenuItemClick} 
               aTab = {activeTab}
+              isSidebarOpen = {isSidebarOpen}
             />
           ) }
         </ul>

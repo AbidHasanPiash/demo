@@ -8,7 +8,7 @@ import SalesmanPerSale from "./dashContent/SalesmanPerSale";
 
 export default function Dashboard() {
   return (
-    <div className="overflow-y-scroll">
+    <div className="">
         {/* Card */}
       <div className="grid lg:grid-cols-4 grid-cols-2 gap-3 p-3">
         <div className="bg-sky-500 rounded-lg text-white shadow">
@@ -73,7 +73,7 @@ export default function Dashboard() {
         </div>
       </div>
       {/* sale update */}
-      <div className="sm:flex flex-col">
+      <div className="sm:flex">
         <SaleUpdate/>
         <SalesmanPerSale/>
       </div>

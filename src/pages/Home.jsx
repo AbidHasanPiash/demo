@@ -21,7 +21,7 @@ export default function Home() {
         <div className="flex flex-col">
           <Header setIsSidebarOpen = {setIsSidebarOpen}/>
           <div>
-            <h1 className="text-5xl">{activeTab}</h1>
+            <h1 className="hidden">{activeTab}</h1>
             <Outlet/>
           </div>
         </div>

@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
 import Login from "./auth/Login";
 import Signup from "./auth/Signup";
 import ForgotPassword from "./auth/ForgotPassword";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
           <Route exact  path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="*" element={<div className="flex items-center justify-center">404 error</div>} />
         <Route path="/" element={<Home/>}>
-          <Route exact  path="/dashboard" element={<div>Dashboarddddd</div>} />
+          <Route exact  path="/dashboard" element={<Dashboard/>} />
           <Route exact  path="/report" element={<div>Reporttt</div>} />
           <Route exact  path="/pharmacy" element={<div>Pharmacy</div>} />
           <Route exact  path="/non-pharmacy" element={<div>non-pharmacy</div>} />

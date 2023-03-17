@@ -5,7 +5,7 @@ import Sidebar from "../components/Sidebar";
 
 export default function Home() {
 
-  const [activeTab, setAtciveTab] = useState('Dashboard');
+  const [activeTab, setAtciveTab] = useState('No Page selected');
   const handleActiveTab = (tab) => {
     setAtciveTab(tab);
   }

@@ -20,7 +20,7 @@ export default function Home() {
       <div className="w-screen">
         <div className="flex flex-col">
           <Header setIsSidebarOpen = {setIsSidebarOpen}/>
-          <div className="bg-gray-100 flex flex-col items-center justify-center">
+          <div>
             <h1 className="text-5xl">{activeTab}</h1>
             <Outlet/>
           </div>

@@ -3,11 +3,13 @@ import {FiShoppingCart} from "react-icons/fi"
 import {HiArrowCircleRight} from "react-icons/hi"
 import {BiPurchaseTagAlt} from "react-icons/bi"
 import {MdOutlineAssignmentReturned, MdAddTask} from "react-icons/md"
+import SaleUpdate from "./dashContent/SaleUpdate";
 
 export default function Dashboard() {
   return (
     <div>
-      <div className="grid grid-cols-4 gap-2 p-3">
+        {/* Card */}
+      <div className="grid grid-cols-4 gap-3 p-3">
         <div className="bg-sky-500 rounded-lg text-white">
            <div>
                 <div className="group flex items-center justify-between p-2">
@@ -69,6 +71,8 @@ export default function Dashboard() {
            </div>
         </div>
       </div>
+      {/* sale update */}
+      <SaleUpdate/>
     </div>
   );
 }

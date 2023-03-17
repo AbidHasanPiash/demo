@@ -4,13 +4,14 @@ import {HiArrowCircleRight} from "react-icons/hi"
 import {BiPurchaseTagAlt} from "react-icons/bi"
 import {MdOutlineAssignmentReturned, MdAddTask} from "react-icons/md"
 import SaleUpdate from "./dashContent/SaleUpdate";
+import SalesmanPerSale from "./dashContent/SalesmanPerSale";
 
 export default function Dashboard() {
   return (
-    <div>
+    <div className="overflow-y-scroll">
         {/* Card */}
       <div className="grid lg:grid-cols-4 grid-cols-2 gap-3 p-3">
-        <div className="bg-sky-500 rounded-lg text-white">
+        <div className="bg-sky-500 rounded-lg text-white shadow">
            <div>
                 <div className="group flex items-center justify-between p-2">
                     <div>
@@ -25,7 +26,7 @@ export default function Dashboard() {
                 </div>
            </div>
         </div>
-        <div className="bg-green-500 rounded-lg text-white">
+        <div className="bg-green-500 rounded-lg text-white shadow">
            <div>
                 <div className="group flex items-center justify-between p-2">
                     <div>
@@ -40,7 +41,7 @@ export default function Dashboard() {
                 </div>
            </div>
         </div>
-        <div className="bg-red-500 rounded-lg text-white">
+        <div className="bg-red-500 rounded-lg text-white shadow">
            <div>
                 <div className="group flex items-center justify-between p-2">
                     <div>
@@ -55,7 +56,7 @@ export default function Dashboard() {
                 </div>
            </div>
         </div>
-        <div className="bg-yellow-500 rounded-lg text-white">
+        <div className="bg-yellow-500 rounded-lg text-white shadow">
            <div>
                 <div className="group flex items-center justify-between p-2">
                     <div>
@@ -72,7 +73,11 @@ export default function Dashboard() {
         </div>
       </div>
       {/* sale update */}
-      <SaleUpdate/>
+      <div className="sm:flex flex-col">
+        <SaleUpdate/>
+        <SalesmanPerSale/>
+      </div>
+      
     </div>
   );
 }

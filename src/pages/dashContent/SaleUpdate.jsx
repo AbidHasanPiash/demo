@@ -30,7 +30,7 @@ export default function SaleUpdate() {
     { name: "11 PM", Pharmacy: 4000, NonPharmacy: 5400, amt: 2400 },
   ];
   return (
-    <div className="w-full md:w-2/3 shadow-xl border rounded m-3">
+    <div className="w-full sm:w-2/3 shadow-xl border rounded m-3">
       <div className="h-16 text-2xl flex items-center justify-start space-x-3 ml-10">
         <FaChartLine/> 
         <h1>Sale Update</h1> 

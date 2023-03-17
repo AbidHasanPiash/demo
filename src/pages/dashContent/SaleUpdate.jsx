@@ -31,7 +31,7 @@ export default function SaleUpdate() {
   ];
   return (
     <div className="w-full sm:w-2/3 shadow-xl border rounded m-3">
-      <div className="h-16 text-2xl flex items-center justify-start space-x-3 ml-10">
+      <div className="h-16 text-gray-500 text-2xl flex items-center justify-start space-x-3 ml-10">
         <FaChartLine/> 
         <h1>Sale Update</h1> 
       </div>

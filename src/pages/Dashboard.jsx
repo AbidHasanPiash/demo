@@ -9,7 +9,7 @@ export default function Dashboard() {
   return (
     <div>
         {/* Card */}
-      <div className="grid grid-cols-4 gap-3 p-3">
+      <div className="grid lg:grid-cols-4 grid-cols-2 gap-3 p-3">
         <div className="bg-sky-500 rounded-lg text-white">
            <div>
                 <div className="group flex items-center justify-between p-2">

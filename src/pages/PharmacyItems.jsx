@@ -2,53 +2,53 @@ import React from 'react'
 
 export default function PharmacyItems() {
     const pharmacyItems = [
-        {id:1, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1'},
-        {id:2, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1'},
-        {id:3, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1'},
-        {id:4, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1'},
-        {id:5, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1'},
-        {id:6, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1'},
-        {id:7, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1'},
-        {id:8, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1'},
-        {id:9, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1'},
-        {id:10, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1'},
-        {id:12, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1'},
-        {id:13, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1'},
-        {id:14, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1'},
-        {id:15, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1'},
-        {id:16, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1'},
-    ]
+        {id:1, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: true },
+        {id:2, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
+        {id:3, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
+        {id:4, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
+        {id:5, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
+        {id:6, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
+        {id:7, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
+        {id:8, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
+        {id:9, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
+        {id:10, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
+        {id:12, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
+        {id:13, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
+        {id:14, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
+        {id:15, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
+        {id:16, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
+    ];
+    
+    const headers = Object.keys(pharmacyItems[0]).filter((key) => key !== 'header');
+    console.log(headers);
   return (
-    <div>
+    <div className='m-3'>
         <div>
             <h1>PharmacyItems</h1>
         </div>
-        <div>
-            <table>
-                <thead>
-                    <th>SN</th>
-                    <th>Name</th>
-                    <th>Generic</th>
-                    <th>Category</th>
-                    <th>Company</th>
-                    <th>Stock</th>
-                    <th>Box Size</th>
-                    <th>MRP</th>
-                    <th>TP</th>
+        <div className='w-full'>
+            <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                    <tr>
+                        {headers.map((header) => (
+                            <th key={header} scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" >
+                                {header}
+                            </th>
+                        ))}
+                    </tr>
                 </thead>
-                <tbody>
-                    {pharmacyItems.map((item, index)=>(
-                        <tr key={item.id}>
-                            <td>{index}</td>
-                            <td>{item.name}</td>
-                            <td>{item.generic}</td>
-                            <td>{item.category}</td>
-                            <td>{item.company}</td>
-                            <td>{item.stock}</td>
-                            <td>{item.boxSize}</td>
-                            <td>{item.mrp}</td>
-                            <td>{item.tp}</td>
-                        </tr>
+                <tbody className="bg-white divide-y divide-gray-200">
+                    {pharmacyItems.map((item) => (
+                    <tr key={item.id}>
+                        {headers.map((header) => (
+                        <td
+                            key={`${item.id}-${header}`}
+                            className="px-6 py-4 whitespace-nowrap"
+                        >
+                            {item[header]}
+                        </td>
+                        ))}
+                    </tr>
                     ))}
                 </tbody>
             </table>

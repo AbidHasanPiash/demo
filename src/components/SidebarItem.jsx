@@ -43,7 +43,6 @@ export default function SidebarItem({item, tab, aTab, isSidebarOpen}){
                         className={`${aTab === item.name ? 'bg-blue-500 text-white' : 'hover:bg-gray-700'} flex items-center justify-start cursor-pointer rounded my-1 p-3 space-x-2 select-none`}>
                         <i className=''>{item.icon}</i>
                         <p className={`${isSidebarOpen ? 'block' : 'scale-0'} duration-300`}>{item.name}</p>
-                        {console.log(aTab, item.name)}
                     </span>
                 </Link>
                 

@@ -4,6 +4,7 @@ import Signup from "./auth/Signup";
 import ForgotPassword from "./auth/ForgotPassword";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
+import PharmacyItems from "./pages/PharmacyItems";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <Route path="/" element={<Home/>}>
           <Route index element={<Dashboard/>} />
           <Route exact  path="/report" element={<div>Reporttt</div>} />
-          <Route exact  path="/pharmacy" element={<div>Pharmacy</div>} />
+          <Route exact  path="/pharmacy" element={<PharmacyItems/>} />
           <Route exact  path="/non-pharmacy" element={<div>non-pharmacy</div>} />
           <Route exact  path="/order" element={<div>order</div>} />
           <Route exact  path="/purchase" element={<div>purchase</div>} />

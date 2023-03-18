@@ -31,7 +31,7 @@ export default function SaleUpdate() {
         <h1>Sale Update</h1> 
       </div>
       <ResponsiveContainer width="100%" aspect={3}>
-        <LineChart data={data}>
+        <LineChart width={500} height={300} margin={{ top: 5, right: 30, left: 20, bottom: 5, }} data={data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="sale" />
           <YAxis />

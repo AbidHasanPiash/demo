@@ -11,7 +11,7 @@ export default function SidebarItem({item, tab, aTab, isSidebarOpen}){
         return (
             <li>
                 <div onClick={() => setExpand(!expand)}>
-                    <span className={`hover:bg-gray-700 flex items-center justify-between cursor-pointer rounded my-1 p-3 select-none`}>
+                    <span className={`${aTab === item.name ? 'bg-blue-500 text-white' : 'hover:bg-gray-700'}  flex items-center justify-between cursor-pointer rounded my-1 p-3 select-none`}>
                         
                             <div className="flex items-center justify-center space-x-2">
                                 <i className=''>{item.icon}</i>
@@ -22,10 +22,10 @@ export default function SidebarItem({item, tab, aTab, isSidebarOpen}){
                 </div>
                 <div className={`${isSidebarOpen && expand ? "block" : "hidden"}  pl-3`}>
                     { item.subItems.map((child, index) =>
-                        <div key={index} onClick={()=>handleTab(child)}>
+                        <div key={index} onClick={()=>handleTab(child.name)}>
                             <Link to={child.link ? child.link : '#'}>
                                 <span
-                                    className={`hover:bg-gray-700 flex items-center justify-start cursor-pointer rounded my-1 p-3 space-x-2 select-none`}>
+                                    className={`${aTab === child.name ? 'bg-blue-500 text-white' : 'hover:bg-gray-700'}  flex items-center justify-start cursor-pointer rounded my-1 p-3 space-x-2 select-none`}>
                                     <i className=''>{child.icon}</i>
                                     <p className={`${isSidebarOpen ? 'block' : 'scale-0'} duration-300`}>{child.name}</p>  
                                 </span>
@@ -37,12 +37,13 @@ export default function SidebarItem({item, tab, aTab, isSidebarOpen}){
         )
     }else{
         return (
-            <li onClick={()=>handleTab(item)}>
+            <li onClick={()=>handleTab(item.name)}>
                 <Link to={item.link ? item.link : '#'}>
                     <span
-                        className={`hover:bg-gray-700 flex items-center justify-start cursor-pointer rounded my-1 p-3 space-x-2 select-none`}>
+                        className={`${aTab === item.name ? 'bg-blue-500 text-white' : 'hover:bg-gray-700'} flex items-center justify-start cursor-pointer rounded my-1 p-3 space-x-2 select-none`}>
                         <i className=''>{item.icon}</i>
                         <p className={`${isSidebarOpen ? 'block' : 'scale-0'} duration-300`}>{item.name}</p>
+                        {console.log(aTab, item.name)}
                     </span>
                 </Link>
                 

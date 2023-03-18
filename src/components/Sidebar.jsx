@@ -41,7 +41,7 @@ export default function Sidebar({tab, isSidebarOpen}) {
   };
 
 
-  const [activeTab, setAtciveTab] = useState({});
+  const [activeTab, setAtciveTab] = useState('Dashboard');
   const [isOpen, setIsOpen] = useState(false);
   const handleMenuItemClick = (t) => {
     tab(t.name);

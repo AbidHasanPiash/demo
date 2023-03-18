@@ -49,7 +49,7 @@ export default function Sidebar({tab, isSidebarOpen}) {
   }
 
   const menuItems = [
-    { id:1, name:'Dashboard', link:'/dashboard', icon:<RxDashboard size={22}/> },
+    { id:1, name:'Dashboard', link:'/', icon:<RxDashboard size={22}/> },
     { id:2, name:'Report',  link:'/report', icon:<TbReportSearch size={22}/> },
     { id:3, name:'Products', icon:<TbBrandProducthunt size={22}/>, 
       subItems:[

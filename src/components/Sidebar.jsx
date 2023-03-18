@@ -9,6 +9,7 @@ import {HiOutlineLogout, HiOutlineShoppingBag} from 'react-icons/hi'
 import {RiSearch2Line, RiBuilding2Line} from 'react-icons/ri'
 import {RxDashboard} from 'react-icons/rx'
 import {GiMedicines} from 'react-icons/gi'
+import {CgListTree} from 'react-icons/cg'
 import {BsBox, BsPeople} from 'react-icons/bs'
 import {MdOutlinePlaylistAddCheckCircle, MdOutlineSettingsSuggest, MdOutlineCategory} from 'react-icons/md'
 import {TbReportSearch, TbBrandProducthunt, TbBabyBottle, TbTruckDelivery} from 'react-icons/tb'
@@ -51,21 +52,22 @@ export default function Sidebar({tab, isSidebarOpen}) {
   const menuItems = [
     { id:1, name:'Dashboard', link:'/', icon:<RxDashboard size={22}/> },
     { id:2, name:'Report',  link:'/report', icon:<TbReportSearch size={22}/> },
-    { id:3, name:'Products', icon:<TbBrandProducthunt size={22}/>, 
+    { id:3, name:'Chart of Account',  link:'/chartofaccount', icon:<CgListTree size={22}/> },
+    { id:4, name:'Products', icon:<TbBrandProducthunt size={22}/>, 
       subItems:[
         {id:1, name:'Pharmacy', link:'/pharmacy',  icon:<GiMedicines size={22}/>},
         {id:2, name:'Non-Pharmacy', link:'/non-pharmacy', icon:<TbBabyBottle size={22}/>}
       ]},
-    { id:4, name:'Order', link:'/order', icon:<MdOutlinePlaylistAddCheckCircle size={22}/> },
-    { id:5, name:'Purchase', link:'/purchase', icon:<HiOutlineShoppingBag size={22}/> },
-    { id:6, name:'Setup', icon:<MdOutlineSettingsSuggest size={22}/>, 
+    { id:5, name:'Order', link:'/order', icon:<MdOutlinePlaylistAddCheckCircle size={22}/> },
+    { id:6, name:'Purchase', link:'/purchase', icon:<HiOutlineShoppingBag size={22}/> },
+    { id:7, name:'Setup', icon:<MdOutlineSettingsSuggest size={22}/>, 
       subItems:[
         {id:1, name:'Category', link:'/category',  icon:<MdOutlineCategory size={22}/>},
         {id:2, name:'Box', link:'/box', icon:<BsBox size={22}/>}
       ]},
-    { id:7, name:'Company', link:'/company', icon:<RiBuilding2Line size={22}/> },
-    { id:8, name:'Suplier', link:'/suplier', icon:<TbTruckDelivery size={22}/>},
-    { id:9, name:'Employe', link:'/employe', icon:<BsPeople size={22}/> }
+    { id:8, name:'Company', link:'/company', icon:<RiBuilding2Line size={22}/> },
+    { id:9, name:'Suplier', link:'/suplier', icon:<TbTruckDelivery size={22}/>},
+    { id:10, name:'Employe', link:'/employe', icon:<BsPeople size={22}/> }
   ]
   return (
     <aside className={`bg-gray-800 text-gray-300 duration-300 ${isSidebarOpen? 'w-64' : 'w-20'} h-screen px-2`}>

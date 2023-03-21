@@ -5,6 +5,7 @@ import ForgotPassword from "./auth/ForgotPassword";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import PharmacyItems from "./pages/PharmacyItems";
+import ChartOfAccount from "./pages/ChartOfAccount";
 
 function App() {
   return (
@@ -14,19 +15,20 @@ function App() {
           <Route exact  path="/signup" element={<Signup />} />
           <Route exact  path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="*" element={<div className="flex items-center justify-center">404 error</div>} />
-        <Route path="/" element={<Home/>}>
-          <Route index element={<Dashboard/>} />
-          <Route exact  path="/report" element={<div>Reporttt</div>} />
-          <Route exact  path="/pharmacy" element={<PharmacyItems/>} />
-          <Route exact  path="/non-pharmacy" element={<div>non-pharmacy</div>} />
-          <Route exact  path="/order" element={<div>order</div>} />
-          <Route exact  path="/purchase" element={<div>purchase</div>} />
-          <Route exact  path="/category" element={<div>category</div>} />
-          <Route exact  path="/box" element={<div>box</div>} />
-          <Route exact  path="/company" element={<div>company</div>} />
-          <Route exact  path="/suplier" element={<div>suplier</div>} />
-          <Route exact  path="/employe" element={<div>employe</div>} />
-        </Route>
+          <Route path="/" element={<Home/>}>
+            <Route index element={<Dashboard/>} />
+            <Route exact  path="/report" element={<div>Reporttt</div>} />
+            <Route exact  path="/chartofaccount" element={<ChartOfAccount/>} />
+            <Route exact  path="/pharmacy" element={<PharmacyItems/>} />
+            <Route exact  path="/non-pharmacy" element={<div>non-pharmacy</div>} />
+            <Route exact  path="/order" element={<div>order</div>} />
+            <Route exact  path="/purchase" element={<div>purchase</div>} />
+            <Route exact  path="/category" element={<div>category</div>} />
+            <Route exact  path="/box" element={<div>box</div>} />
+            <Route exact  path="/company" element={<div>company</div>} />
+            <Route exact  path="/suplier" element={<div>suplier</div>} />
+            <Route exact  path="/employe" element={<div>employe</div>} />
+          </Route>
       </Routes>
     </BrowserRouter>
   );

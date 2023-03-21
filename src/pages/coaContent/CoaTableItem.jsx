@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 export default function CoaTableItem({item}) {
-    const [expand, setExpand] = useState(false);
+  const [expand, setExpand] = useState(false);
   if (item.children){
     return(
         <React.Fragment>

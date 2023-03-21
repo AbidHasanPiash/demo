@@ -97,20 +97,22 @@ export default function ChartOfAccount() {
   return (
   <div className='text-4xl'>
     <h1>data</h1>
-    <table className='min-w-full table-fixed divide-y divide-gray-200'>
-      <thead className="bg-gray-50">
-        <tr>
-          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" >Yum</th>
-          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" >Size</th>
-          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" >Date</th>
-        </tr>
-      </thead>
-      <tbody className="bg-white divide-y divide-gray-200">
-        {data.map((item, index)=>(
-          <CoaTableItem key={index} item={item}/>
-        ))}
-      </tbody>
-    </table>
+    <div className="w-3/4">
+      <table className='min-w-full table-fixed border-collapse divide-y divide-gray-200'>
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" >Yum</th>
+            <th className="w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" >Size</th>
+            <th className="w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" >Date</th>
+          </tr>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-200">
+          {data.map((item, index)=>(
+            <CoaTableItem key={index} item={item}/>
+          ))}
+        </tbody>
+      </table>
+    </div>
   </div>
   );
 }

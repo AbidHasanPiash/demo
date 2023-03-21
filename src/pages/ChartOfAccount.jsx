@@ -1,5 +1,5 @@
 import React from "react";
-import CoaItem from "./coaContent/CoaItem";
+import CoaTableItem from "./coaContent/CoaTableItem";
 
 export default function ChartOfAccount() {
   const data = [
@@ -95,19 +95,19 @@ export default function ChartOfAccount() {
     },
   ];
   return (
-  <div className="text-4xl">
+  <div className='text-4xl'>
     <h1>data</h1>
-    <table className="items-center">
-      <thead>
+    <table className='min-w-full table-fixed divide-y divide-gray-200'>
+      <thead className="bg-gray-50">
         <tr>
-          <th>Header 1</th>
-          <th>Header 2</th>
-          <th>Header 3</th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" >Yum</th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" >Size</th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" >Date</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="bg-white divide-y divide-gray-200">
         {data.map((item, index)=>(
-          <CoaItem key={index} item={item}/>
+          <CoaTableItem key={index} item={item}/>
         ))}
       </tbody>
     </table>

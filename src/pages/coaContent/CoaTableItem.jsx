@@ -6,14 +6,14 @@ export default function CoaTableItem({item}) {
     return(
         <React.Fragment>
             <tr 
-            className='space-y-4 ml-9'
+            className='space-y-4'
             onClick={()=>setExpand(!expand)}>
                 <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{item.size}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{item.date}</td>
             </tr>
             {expand && item.children.map((children, index)=>(
-                <CoaTableItem key={index} item = {children}/>
+                <CoaTableItem key={index} item = {children} className="pl-10"/>
             ))}
         </React.Fragment>
       )
@@ -21,9 +21,9 @@ export default function CoaTableItem({item}) {
   else{
     return(
         <tr className='space-y-4'>
-          <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
-          <td className="px-6 py-4 whitespace-nowrap">{item.size}</td>
-          <td className="px-6 py-4 whitespace-nowrap">{item.date}</td>
+          <td className="pl-20">{item.name}</td>
+          <td className="px-6">{item.size}</td>
+          <td className="px-6">{item.date}</td>
         </tr>
       )
   }

@@ -57,6 +57,7 @@ export default function ChartOfAccount() {
         </tbody>
       </table>
     </div>
+    {/* Duplicate table */}
     <div className="w-3/4 mt-20">
       <div className="space-x-2 ml-4">
         <button className="border rounded-lg px-3 hover:bg-blue-200 hover:bg-opacity-50">Edit</button>

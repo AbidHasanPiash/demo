@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export default function Report() {
     const [selectedRow, setSelectedRow] = useState(null);
+    const [isEditable, setIsEditable] = useState(false);
     const [data, setData] = useState([
         { id: 1, name: "John Doe", age: 25 },
         { id: 2, name: "Jane Smith", age: 30 },
@@ -32,31 +33,30 @@ export default function Report() {
         ]);
     };
     return (
-        <div>
-            <div style={{ marginBottom: "10px" }}>
-                <button onClick={handleAdd}>Add Row</button>
-                {selectedRow !== null && (
+        <div className="mt-32 flex flex-col items-center justify-center">
+            <div className=" flex items-center justify-center space-x-3">
+                <button onClick={handleAdd}>Add</button>
+                <button onClick={()=>setIsEditable(true)}>Edit</button>
+                <button onClick={() => {setSelectedRow(null); setIsEditable(false);}}>Save</button>
+                <button onClick={() => {setSelectedRow(null); setIsEditable(false);}}>Cancel</button>
+                {isEditable && selectedRow !== null && (
                     <>
-                        <button onClick={() => setSelectedRow(null)}>Save</button>
-                        <button onClick={() => handleDelete(data[selectedRow].id)}>
-                            Delete
-                        </button>
+                        <button onClick={() => handleDelete(data[selectedRow].id)}> Delete </button>
                     </>
                 )}
             </div>
-            <table>
-                <thead>
+            <table className="w-1/2 table-auto border divide-y divide-gray-200">
+                <thead className="bg-gray-50">
                     <tr>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Actions</th>
+                        <th className="w-1/2 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                        <th className="w-1/2 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Age</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="bg-white divide-y divide-gray-200">
                     {data.map((row, index) => (
-                        <tr key={row.id}>
-                            <td>
-                                {selectedRow === index ? (
+                        <tr key={row.id} onClick={() => {handleEdit(index); console.log(selectedRow);}}>
+                            <td className={`${selectedRow === index && 'bg-yellow-300'}`}>
+                                {isEditable && selectedRow === index ? (
                                     <input
                                         type="text"
                                         value={row.name}
@@ -66,8 +66,8 @@ export default function Report() {
                                     row.name
                                 )}
                             </td>
-                            <td>
-                                {selectedRow === index ? (
+                            <td className={`${selectedRow === index && 'bg-yellow-300'}`}>
+                                {isEditable && selectedRow === index ? (
                                     <input
                                         type="text"
                                         value={row.age}
@@ -77,15 +77,11 @@ export default function Report() {
                                     row.age
                                 )}
                             </td>
-                            <td>
-                                {selectedRow === index ? (
-                                    <>
-                                        <button onClick={() => handleDelete(row.id)}>Delete</button>
-                                    </>
-                                ) : (
-                                    <button onClick={() => handleEdit(index)}>Edit</button>
-                                )}
-                            </td>
+                            {/* <td>
+                                {selectedRow === index 
+                                ? <button onClick={() => handleDelete(row.id)}>Delete</button>
+                                : <button onClick={() => handleEdit(index)}>Edit</button>}
+                            </td> */}
                         </tr>
                     ))}
                 </tbody>
@@ -93,3 +89,6 @@ export default function Report() {
         </div>
     );
 }
+
+//Undo til nowwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+//ok???????????????????????????????????????????????????

@@ -15,6 +15,8 @@ export default function Report() {
 
     const handleDelete = (index) => {
         setData(data.filter((row) => row.id !== index));
+        setSelectedRow(null);
+        setIsEditable(false);
     };
 
     const handleAdd = () => {
@@ -36,7 +38,7 @@ export default function Report() {
         <div className="mt-32 flex flex-col items-center justify-center">
             <div className=" flex items-center justify-center space-x-3">
                 <button onClick={handleAdd}>Add</button>
-                <button onClick={()=>setIsEditable(true)}>Edit</button>
+                <button onClick={() => setIsEditable(true)}>Edit</button>
                 <button onClick={() => {setSelectedRow(null); setIsEditable(false);}}>Save</button>
                 <button onClick={() => {setSelectedRow(null); setIsEditable(false);}}>Cancel</button>
                 {isEditable && selectedRow !== null && (
@@ -77,11 +79,6 @@ export default function Report() {
                                     row.age
                                 )}
                             </td>
-                            {/* <td>
-                                {selectedRow === index 
-                                ? <button onClick={() => handleDelete(row.id)}>Delete</button>
-                                : <button onClick={() => handleEdit(index)}>Edit</button>}
-                            </td> */}
                         </tr>
                     ))}
                 </tbody>
@@ -89,6 +86,3 @@ export default function Report() {
         </div>
     );
 }
-
-//Undo til nowwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-//ok???????????????????????????????????????????????????

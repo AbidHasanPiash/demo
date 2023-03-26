@@ -3,7 +3,7 @@ import useFetch from "../hooks/useFetch";
 import CoaTableItem from "./coaContent/CoaTableItem";
 
 export default function ChartOfAccount() {
-  const {isLoading, data, error } = useFetch(`data/coaData.json`);
+  const {isLoading, data, error } = useFetch(`http://localhost:8000/coaData`);
   isLoading && <div>Loading...</div>;
   error && <div>Error: {error.message}</div>;
   (!data || !data?.length) && <div>No data found</div>;

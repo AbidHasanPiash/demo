@@ -1,58 +1,124 @@
-import React from 'react'
+import React, { useState } from "react";
+import useFetch from "../hooks/useFetch";
+import { MdDoubleArrow } from "react-icons/md";
 
 export default function PharmacyItems() {
-    const pharmacyItems = [
-        {id:1, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: true },
-        {id:2, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
-        {id:3, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
-        {id:4, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
-        {id:5, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
-        {id:6, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
-        {id:7, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
-        {id:8, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
-        {id:9, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
-        {id:10, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
-        {id:12, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
-        {id:13, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
-        {id:14, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
-        {id:15, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
-        {id:16, name:'Napa', generic:'Paracetamol', category:'tablet', company:'Beximco Pharmaceutical', stock:'510', boxSize:'510', tp:'0.8', mrp:'1', header: false},
-    ];
-    
-    const headers = Object.keys(pharmacyItems[0]).filter((key) => key !== 'header');
-    console.log(headers);
+  const {
+    isLoading,
+    data: pharmacyItems,
+    error,
+  } = useFetch(`http://localhost:8000/medicines`);
+  isLoading && <div>Loading...</div>;
+  error && <div>Error: {error.message}</div>;
+  (!pharmacyItems || !pharmacyItems?.length) && <div>No data found</div>;
+
+  const [expandedRows, setExpandedRows] = useState([]);
+
+  const toggleRow = (index) => {
+    if (expandedRows.includes(index)) {
+      setExpandedRows(expandedRows.filter((i) => i !== index));
+    } else {
+      setExpandedRows([...expandedRows, index]);
+    }
+  };
+
   return (
-    <div className='m-3'>
-        <div>
-            <h1>PharmacyItems</h1>
-        </div>
-        <div className='w-full'>
-            <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                    <tr>
-                        {headers.map((header) => (
-                            <th key={header} scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" >
-                                {header}
-                            </th>
-                        ))}
-                    </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                    {pharmacyItems.map((item) => (
-                    <tr key={item.id}>
-                        {headers.map((header) => (
-                        <td
-                            key={`${item.id}-${header}`}
-                            className="px-6 py-4 whitespace-nowrap"
-                        >
-                            {item[header]}
-                        </td>
-                        ))}
-                    </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
+    <div className="m-3 w-full h-full">
+      <div>
+        <h1>PharmacyItems</h1>
+      </div>
+      <div className="overflow-y-scroll">
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
+            <tr>
+              <th></th>
+              <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                name
+              </th>
+              <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                generic
+              </th>
+              <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                category
+              </th>
+              <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                company
+              </th>
+              <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                stock
+              </th>
+              <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                boxSize
+              </th>
+              <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                tp
+              </th>
+              <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                mrp
+              </th>
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {pharmacyItems.map((item, index) => (
+              <>
+                <tr key={item.id}>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <MdDoubleArrow
+                      onClick={() => toggleRow(index)}
+                      className="border cursor-pointer"
+                    />
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">{item.name}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {item.generic}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {item.category}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {item.company}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">{item.stock}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {item.boxSize}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">{item.tp}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{item.mrp}</td>
+                </tr>
+                {expandedRows.includes(index) && (
+                  <tr>
+                    <td colSpan={100}>Extra information for {item.name}</td>
+                  </tr>
+                )}
+              </>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
-  )
+  );
 }

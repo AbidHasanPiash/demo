@@ -5,6 +5,7 @@ import { BiMessageSquareEdit } from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BsDatabaseGear } from "react-icons/bs";
 import AddItemModal from "./pharmacyContent/AddItemModal";
+import DeleteItemModal from "./pharmacyContent/DeleteItemModal";
 
 export default function PharmacyItems() {
   const { isLoading, data: pharmacyItems, error, } = useFetch(`http://localhost:8000/medicines`);
@@ -14,6 +15,8 @@ export default function PharmacyItems() {
 
   const [expandedRows, setExpandedRows] = useState([]);
   const [isAddClicked, setIsAddClicked] = useState(false);
+  const [isDeleteClicked, setIsDeleteClicked] = useState(false);
+  const [deleteableId, setIDeleteableId] = useState(null);
 
   const toggleRow = (index) => {
     if (expandedRows.includes(index)) {
@@ -22,8 +25,9 @@ export default function PharmacyItems() {
       setExpandedRows([...expandedRows, index]);
     }
   };
-  const handleAddButton = () => {
-    setIsAddClicked(true);
+  const handleDeleteButton = (id) => {
+    setIsDeleteClicked(true);
+    setIDeleteableId(id);
   };
 
   return (
@@ -33,15 +37,12 @@ export default function PharmacyItems() {
       </div>
       <div className="text-right py-5">
         <button
-          onClick={handleAddButton}
+          onClick={()=> setIsAddClicked(true)}
           className="px-3 border bg-blue-400 hover:bg-blue-600 text-white rounded-lg"
         >
           Add
         </button>
       </div>
-      {isAddClicked && (
-        <AddItemModal onClose={()=>setIsAddClicked(false)}/>
-      )}
       <div className="">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
@@ -59,7 +60,7 @@ export default function PharmacyItems() {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {pharmacyItems.map((item, index) => (
+            {pharmacyItems?.map((item, index) => (
               <React.Fragment key={index}>
                 <tr>
                   <td className="px-6 py-4 flex items-center justify-center space-x-3">
@@ -85,7 +86,7 @@ export default function PharmacyItems() {
                   <td className="px-6 py-4 space-x-2 text-right">
                     <button><BiMessageSquareEdit/></button>
                     <button><BsDatabaseGear/></button>
-                    <button><AiOutlineDelete/></button>
+                    <button onClick={()=> handleDeleteButton(item.id)}><AiOutlineDelete/></button>
                   </td>
                 </tr>
                 {expandedRows.includes(index) && (
@@ -98,6 +99,16 @@ export default function PharmacyItems() {
           </tbody>
         </table>
       </div>
+      {isAddClicked && (
+        <div className="flex items-center justify-center">
+            <AddItemModal onClose={()=>setIsAddClicked(false)}/>
+        </div>
+      )}
+      {isDeleteClicked && (
+        <div className="flex items-center justify-center">
+            <DeleteItemModal deleteableId = {deleteableId} onClose={()=>setIsDeleteClicked(false)}/>
+        </div>
+      )}
     </div>
   );
 }

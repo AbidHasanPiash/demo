@@ -17,13 +17,13 @@ export default function AddItemModal({onClose}) {
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(item)
         }).then(()=>{
-            e.preventDefault();
+            e.preventdeDault();
             console.log("New item added")
             onClose();
         })
     }
   return (
-    <div className="absolute w-2/3 h-3/4 flex items-center justify-center bg-slate-500">
+    <div className="absolute top-1/4 w-2/3 flex items-center justify-center bg-slate-500">
       <button
         className="absolute top-0 right-0"
         onClick={() => onClose()}

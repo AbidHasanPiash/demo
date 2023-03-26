@@ -176,6 +176,17 @@
       "tp": 40,
       "mrp": 50,
       "header": false
+    },
+    {
+      "name": "Napa",
+      "generic": "Peracitamol",
+      "category": "Tablet",
+      "company": "Beximco",
+      "stock": "510",
+      "boxSize": "510",
+      "tp": "100",
+      "mrp": "120",
+      "id": 7
     }
   ]
 }

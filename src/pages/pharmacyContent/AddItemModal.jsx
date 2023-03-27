@@ -24,10 +24,7 @@ export default function AddItemModal({onClose}) {
     }
   return (
     <div className="absolute top-1/4 w-2/3 flex items-center justify-center bg-slate-500">
-      <button
-        className="absolute top-0 right-0"
-        onClick={() => onClose()}
-      >
+      <button className="absolute top-0 right-0" onClick={() => onClose()} >
         close
       </button>
       <form onSubmit={handleSubmit} className="flex flex-col items-start justify-center">

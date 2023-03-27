@@ -6,6 +6,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { BsDatabaseGear } from "react-icons/bs";
 import AddItemModal from "./pharmacyContent/AddItemModal";
 import DeleteItemModal from "./pharmacyContent/DeleteItemModal";
+import EditItemModal from "./pharmacyContent/EditItemModal";
 
 export default function PharmacyItems() {
   const { isLoading, data: pharmacyItems, error, } = useFetch(`http://localhost:8000/medicines`);
@@ -17,6 +18,8 @@ export default function PharmacyItems() {
   const [isAddClicked, setIsAddClicked] = useState(false);
   const [isDeleteClicked, setIsDeleteClicked] = useState(false);
   const [deleteableId, setIDeleteableId] = useState(null);
+  const [isEditClicked, setIsEditClicked] = useState(false);
+  const [editableId, setIEditableId] = useState(null);
 
   const toggleRow = (index) => {
     if (expandedRows.includes(index)) {
@@ -28,6 +31,10 @@ export default function PharmacyItems() {
   const handleDeleteButton = (id) => {
     setIsDeleteClicked(true);
     setIDeleteableId(id);
+  };
+  const handleEditButton = (id) => {
+    setIsEditClicked(true);
+    setIEditableId(id);
   };
 
   return (
@@ -83,8 +90,8 @@ export default function PharmacyItems() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">{item.tp}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{item.mrp}</td>
-                  <td className="px-6 py-4 space-x-2 text-right">
-                    <button><BiMessageSquareEdit/></button>
+                  <td className="px-3 py-4 whitespace-nowrap space-x-3">
+                    <button onClick={()=> handleEditButton(item.id)}><BiMessageSquareEdit/></button>
                     <button><BsDatabaseGear/></button>
                     <button onClick={()=> handleDeleteButton(item.id)}><AiOutlineDelete/></button>
                   </td>
@@ -102,6 +109,11 @@ export default function PharmacyItems() {
       {isAddClicked && (
         <div className="flex items-center justify-center">
             <AddItemModal onClose={()=>setIsAddClicked(false)}/>
+        </div>
+      )}
+      {isEditClicked && (
+        <div className="flex items-center justify-center">
+            <EditItemModal editableId = {editableId} onClose={()=>setIsEditClicked(false)}/>
         </div>
       )}
       {isDeleteClicked && (

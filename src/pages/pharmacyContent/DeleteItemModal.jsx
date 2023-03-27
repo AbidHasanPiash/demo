@@ -6,7 +6,6 @@ export default function DeleteItemModal({deleteableId, onClose}) {
     isLoading && <div>Loading...</div>;
     error && <div>Error: {error.message}</div>;
     (!Item || !Item?.length) && <div>No data found</div>;
-    console.log(Item);
 
     const handelDelete = (e)=> {
         e.preventDefault();

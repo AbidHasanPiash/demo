@@ -106,7 +106,6 @@
   ],
   "medicines": [
     {
-      "id": 1,
       "name": "Amoxicillin",
       "generic": "Amoxicillin",
       "category": "Antibiotic",
@@ -115,10 +114,9 @@
       "boxSize": "10 Tablets",
       "tp": 100,
       "mrp": 120,
-      "header": true
+      "id": 1
     },
     {
-      "id": 2,
       "name": "Paracetamol",
       "generic": "Paracetamol",
       "category": "Analgesic",
@@ -127,10 +125,9 @@
       "boxSize": "20 Tablets",
       "tp": 50,
       "mrp": 60,
-      "header": false
+      "id": 2
     },
     {
-      "id": 3,
       "name": "Cetirizine",
       "generic": "Cetirizine",
       "category": "Antihistamine",
@@ -139,10 +136,9 @@
       "boxSize": "30 Tablets",
       "tp": 200,
       "mrp": 240,
-      "header": false
+      "id": 3
     },
     {
-      "id": 4,
       "name": "Ibuprofen",
       "generic": "Ibuprofen",
       "category": "Anti-inflammatory",
@@ -151,10 +147,9 @@
       "boxSize": "24 Tablets",
       "tp": 80,
       "mrp": 100,
-      "header": false
+      "id": 4
     },
     {
-      "id": 5,
       "name": "Omeprazole",
       "generic": "Omeprazole",
       "category": "Antacid",
@@ -163,10 +158,9 @@
       "boxSize": "14 Capsules",
       "tp": 300,
       "mrp": 360,
-      "header": false
+      "id": 5
     },
     {
-      "id": 6,
       "name": "Aspirin",
       "generic": "Aspirin",
       "category": "Analgesic",
@@ -175,7 +169,7 @@
       "boxSize": "50 Tablets",
       "tp": 40,
       "mrp": 50,
-      "header": false
+      "id": 6
     },
     {
       "name": "Napa",
@@ -189,59 +183,16 @@
       "id": 7
     },
     {
-      "name": "sfsdf",
-      "generic": "asdasd",
-      "category": "dasdas",
-      "company": "asdasd",
-      "stock": "asdasd",
-      "boxSize": "asdasd",
-      "tp": "10",
-      "mrp": "12",
-      "id": 8
-    },
-    {
-      "name": "asdasd",
-      "generic": "asdasd",
-      "category": "saddasd",
-      "company": "asdasd",
-      "stock": "asdad",
-      "boxSize": "asdad",
-      "tp": "20",
-      "mrp": "22",
-      "id": 9
-    },
-    {
-      "name": "weqe",
-      "generic": "qweqwe",
-      "category": "qweqe",
-      "company": "qweqe",
-      "stock": "qweqe",
-      "boxSize": "qweqe",
-      "tp": "20",
-      "mrp": "23",
-      "id": 10
-    },
-    {
-      "name": "asdasd",
-      "generic": "asdasdasd",
-      "category": "asdasdad",
-      "company": "adasdasd",
-      "stock": "asdasdad",
-      "boxSize": "asdasdad",
-      "tp": "25",
-      "mrp": "56",
-      "id": 11
-    },
-    {
-      "name": "asdasdas",
-      "generic": "dasdasd",
-      "category": "asdasd",
-      "company": "asdasd",
-      "stock": "asdasd",
-      "boxSize": "asdasd",
-      "tp": "20",
-      "mrp": "22",
-      "id": 12
+      "category": "Tab",
+      "id": 10,
+      "": "d",
+      "name": "Omep",
+      "generic": "Omiprazol",
+      "company": "AristoPharma",
+      "stock": "30",
+      "boxSize": "20",
+      "tp": "5",
+      "mrp": "6"
     }
   ]
 }

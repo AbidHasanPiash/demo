@@ -34,6 +34,26 @@ export default function Report() {
             ...data.slice(index + 1),
         ]);
     };
+
+
+
+
+
+
+    const [peopleObject, setPeopleObject] = useState({
+        "John": 25,
+        "Jane": 30,
+        "Bob": 40
+      });
+    const [currentName, setCurrentName] = useState(Object.keys(peopleObject)[0]); // set initial value to first key in the object
+    const [currentAge, setCurrentAge] = useState(peopleObject[Object.keys(peopleObject)[0]]); // set initial value to first value in the object
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const updatedPeopleObject = { ...peopleObject }; // create a copy of the original object
+        updatedPeopleObject[currentName] = currentAge; // update the value for the corresponding key
+        setPeopleObject(updatedPeopleObject); // update the state variable
+      };
+
     return (
         <div className="mt-32 flex flex-col items-center justify-center">
             <div className=" flex items-center justify-center space-x-3">
@@ -83,6 +103,14 @@ export default function Report() {
                     ))}
                 </tbody>
             </table>
+
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="name">Name:</label>
+                <input type="text" id="name" value={currentName} onChange={(event) => setCurrentName(event.target.value)} />
+                <label htmlFor="age">Age:</label>
+                <input type="number" id="age" value={currentAge} onChange={(event) => setCurrentAge(event.target.value)} />
+                <button type="submit">Submit</button>
+            </form>
         </div>
     );
 }

@@ -18,10 +18,10 @@ export default function CoaTableItem({item}) {
         <React.Fragment>
             <tr>
                 <td className={itemNameStyle}>
-                  <div className='flex items-center justify-center space-x-2'>
+                  <div onClick={()=>setExpand(!expand)} className='flex items-center justify-center space-x-2'>
                     {expand 
-                      ? <span onClick={()=>setExpand(!expand)} className='flex items-center justify-center'><VscTriangleDown size={15}/> <AiFillFolderOpen size={25}/> </span> 
-                      : <span onClick={()=>setExpand(!expand)} className='flex items-center justify-center'><BiRightArrow size={15}/> <AiFillFolderAdd size={25}/> </span> 
+                      ? <span className='flex items-center justify-center'><VscTriangleDown size={15}/> <AiFillFolderOpen size={25}/> </span> 
+                      : <span className='flex items-center justify-center'><BiRightArrow size={15}/> <AiFillFolderAdd size={25}/> </span> 
                     }
                   </div>
                 </td>

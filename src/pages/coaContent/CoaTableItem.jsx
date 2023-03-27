@@ -5,8 +5,6 @@ import {VscTriangleDown} from 'react-icons/vsc';
 import {RxDot} from 'react-icons/rx';
 
 export default function CoaTableItem({item}) {
-  const [activeRow, setActiveRow] = useState();
-  console.log(activeRow);
   const [expand, setExpand] = useState(false);
   const itemNameStyle =`px-6 whitespace-nowrap flex cursor-pointer
                         ${item.level === 1  && 'ml-3'}
@@ -25,13 +23,13 @@ export default function CoaTableItem({item}) {
                     }
                   </div>
                 </td>
-                <td className="px-6 whitespace-nowrap"><p onClick={()=>setActiveRow(item.name)}>{item.name}</p></td>
+                <td className="px-6 whitespace-nowrap"><p>{item.name}</p></td>
                 <td className="px-6 whitespace-nowrap">{item.size}</td>
                 <td className="px-6 whitespace-nowrap">{item.date}</td>
                 <td className="px-6 whitespace-nowrap">{item.level}</td>
             </tr>
             {expand && item.children.map((children, index)=>(
-              <CoaTableItem key={index} item = {children} className="bg-gray-500"/>
+              <CoaTableItem key={index} item = {children}/>
             ))}
         </React.Fragment>
       )
@@ -43,7 +41,7 @@ export default function CoaTableItem({item}) {
           <td className="px-6 whitespace-nowrap">
             <div className='flex items-center justify-start space-x-2'>
               <AiOutlineFileText/>
-              <p onClick={()=>setActiveRow(item.name)}>{item.name}</p>
+              <p>{item.name}</p>
             </div>
           </td>
           <td className="px-6 whitespace-nowrap">{item.size}</td>

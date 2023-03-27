@@ -1,0 +1,198 @@
+{
+  "coaData": [
+    {
+      "id": 1,
+      "level": 1,
+      "name": "C",
+      "size": "",
+      "date": "02/19/2010",
+      "children": [
+        {
+          "id": 11,
+          "level": 2,
+          "name": "Program Files",
+          "size": "120MB",
+          "date": "03/20/2010",
+          "children": [
+            {
+              "id": 111,
+              "level": 3,
+              "name": "Java",
+              "size": "",
+              "date": "01/13/2010",
+              "state": "closed",
+              "children": [
+                {
+                  "id": 1111,
+                  "level": 4,
+                  "name": "java.exe",
+                  "size": "142KB",
+                  "date": "01/13/2010"
+                },
+                {
+                  "id": 1112,
+                  "level": 4,
+                  "name": "jawt.dll",
+                  "size": "5KB",
+                  "date": "01/13/2010"
+                }
+              ]
+            },
+            {
+              "id": 112,
+              "level": 3,
+              "name": "MySQL",
+              "size": "",
+              "date": "01/13/2010",
+              "state": "closed",
+              "children": [
+                {
+                  "id": 1121,
+                  "level": 4,
+                  "name": "my.ini",
+                  "size": "10KB",
+                  "date": "02/26/2009"
+                },
+                {
+                  "id": 1122,
+                  "level": 4,
+                  "name": "my-huge.ini",
+                  "size": "5KB",
+                  "date": "02/26/2009"
+                },
+                {
+                  "id": 1123,
+                  "level": 4,
+                  "name": "my-large.ini",
+                  "size": "5KB",
+                  "date": "02/26/2009"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "level": 2,
+          "name": "eclipse",
+          "size": "",
+          "date": "01/20/2010",
+          "children": [
+            {
+              "id": 121,
+              "level": 3,
+              "name": "eclipse.exe",
+              "size": "56KB",
+              "date": "05/19/2009"
+            },
+            {
+              "id": 122,
+              "level": 3,
+              "name": "eclipse.ini",
+              "size": "1KB",
+              "date": "04/20/2010"
+            },
+            {
+              "id": 123,
+              "level": 3,
+              "name": "notice.html",
+              "size": "7KB",
+              "date": "03/17/2005"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "medicines": [
+    {
+      "name": "Amoxicillin",
+      "generic": "Amoxicillin",
+      "category": "Antibiotic",
+      "company": "GlaxoSmithKline",
+      "stock": 50,
+      "boxSize": "10 Tablets",
+      "tp": 100,
+      "mrp": 120,
+      "id": 1
+    },
+    {
+      "name": "Paracetamol",
+      "generic": "Paracetamol",
+      "category": "Analgesic",
+      "company": "Johnson & Johnson",
+      "stock": 100,
+      "boxSize": "20 Tablets",
+      "tp": 50,
+      "mrp": 60,
+      "id": 2
+    },
+    {
+      "name": "Cetirizine",
+      "generic": "Cetirizine",
+      "category": "Antihistamine",
+      "company": "Pfizer",
+      "stock": 25,
+      "boxSize": "30 Tablets",
+      "tp": 200,
+      "mrp": 240,
+      "id": 3
+    },
+    {
+      "name": "Ibuprofen",
+      "generic": "Ibuprofen",
+      "category": "Anti-inflammatory",
+      "company": "Novartis",
+      "stock": 75,
+      "boxSize": "24 Tablets",
+      "tp": 80,
+      "mrp": 100,
+      "id": 4
+    },
+    {
+      "name": "Omeprazole",
+      "generic": "Omeprazole",
+      "category": "Antacid",
+      "company": "AstraZeneca",
+      "stock": 40,
+      "boxSize": "14 Capsules",
+      "tp": 300,
+      "mrp": 360,
+      "id": 5
+    },
+    {
+      "name": "Aspirin",
+      "generic": "Aspirin",
+      "category": "Analgesic",
+      "company": "Bayer",
+      "stock": 150,
+      "boxSize": "50 Tablets",
+      "tp": 40,
+      "mrp": 50,
+      "id": 6
+    },
+    {
+      "name": "Napa",
+      "generic": "Peracitamol",
+      "category": "Tablet",
+      "company": "Beximco",
+      "stock": "510",
+      "boxSize": "510",
+      "tp": "100",
+      "mrp": "120",
+      "id": 7
+    },
+    {
+      "category": "Tab",
+      "id": 10,
+      "": "d",
+      "name": "Omep",
+      "generic": "Omiprazol",
+      "company": "AristoPharma",
+      "stock": "30",
+      "boxSize": "20",
+      "tp": "5",
+      "mrp": "6"
+    }
+  ]
+}

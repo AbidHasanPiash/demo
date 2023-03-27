@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import PharmacyItems from "./pages/PharmacyItems";
 import ChartOfAccount from "./pages/ChartOfAccount";
+import Report from "./pages/Report";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
           <Route path="*" element={<div className="flex items-center justify-center">404 error</div>} />
           <Route path="/" element={<Home/>}>
             <Route index element={<Dashboard/>} />
-            <Route exact  path="/report" element={<div>Reporttt</div>} />
+            <Route exact  path="/report" element={<Report/>} />
             <Route exact  path="/chartofaccount" element={<ChartOfAccount/>} />
             <Route exact  path="/pharmacy" element={<PharmacyItems/>} />
             <Route exact  path="/non-pharmacy" element={<div>non-pharmacy</div>} />

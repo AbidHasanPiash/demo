@@ -13,12 +13,12 @@ export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
-    <div className="flex w-screen">
+    <div className="flex w-screen h-screen">
       <div className="">
         <Sidebar tab = {handleActiveTab} isSidebarOpen = {isSidebarOpen}/>
       </div>
-      <div className="w-screen">
-        <div className="flex flex-col">
+      <div className="w-full">
+        <div className="flex flex-col overflow-y-scroll">
           <Header setIsSidebarOpen = {setIsSidebarOpen}/>
           <div>
             <h1 className="hidden">{activeTab}</h1>

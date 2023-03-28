@@ -4,7 +4,7 @@ import {BiRightArrow} from 'react-icons/bi';
 import {VscTriangleDown} from 'react-icons/vsc';
 import {RxDot} from 'react-icons/rx';
 
-export default function CoaTableItem({item, selectedRow, handleSelectedRow}) {
+export default function CoaTableItem({item, editable, selectedRow, handleSelectedRow}) {
   const [expand, setExpand] = useState(false);
   const itemNameStyle =`px-6 whitespace-nowrap flex cursor-pointer
                         ${item.level === 1  && 'ml-3'}
@@ -14,7 +14,7 @@ export default function CoaTableItem({item, selectedRow, handleSelectedRow}) {
   if (item.children){
     return(
         <React.Fragment>
-            <tr className={`${selectedRow && selectedRow === item.id ? 'bg-yellow-300':'bg-white'}`}>
+            <tr className={`${selectedRow === item.id ? 'bg-yellow-300':'bg-white'}`}>
                 <td className={itemNameStyle}>
                   <div onClick={()=>setExpand(!expand)} className='flex items-center justify-center space-x-2'>
                     {expand 
@@ -23,13 +23,24 @@ export default function CoaTableItem({item, selectedRow, handleSelectedRow}) {
                     }
                   </div>
                 </td>
-                <td className="px-6 whitespace-nowrap"><p onClick={()=>handleSelectedRow(item.id)}>{item.name}</p></td>
+                <td className="px-6 whitespace-nowrap"><p onClick={()=>!editable && handleSelectedRow(item.id)}>
+                  {editable && selectedRow === item.id
+                    ?<input type="text" name="name" id="name" value={item.name} />
+                    :<span>{item.name}</span>
+                  }
+                </p></td>
                 <td className="px-6 whitespace-nowrap">{item.size}</td>
                 <td className="px-6 whitespace-nowrap">{item.date}</td>
                 <td className="px-6 whitespace-nowrap">{item.level}</td>
             </tr>
             {expand && item.children.map((children, index)=>(
-              <CoaTableItem key={index} item = {children} selectedRow={selectedRow} handleSelectedRow={handleSelectedRow}/>
+              <CoaTableItem 
+                key={index} 
+                item = {children} 
+                editable={editable}
+                selectedRow={selectedRow} 
+                handleSelectedRow={handleSelectedRow}
+              />
             ))}
         </React.Fragment>
       )

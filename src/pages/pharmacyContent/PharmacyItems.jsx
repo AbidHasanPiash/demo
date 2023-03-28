@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import useFetch from "../hooks/useFetch";
+import useFetch from "../../hooks/useFetch";
 import { MdDoubleArrow } from "react-icons/md";
 import { BiMessageSquareEdit } from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BsDatabaseGear } from "react-icons/bs";
-import AddItemModal from "./pharmacyContent/AddItemModal";
-import DeleteItemModal from "./pharmacyContent/DeleteItemModal";
-import EditItemModal from "./pharmacyContent/EditItemModal";
+import AddItemModal from "./AddItemModal";
+import DeleteItemModal from "./DeleteItemModal";
+import EditItemModal from "./EditItemModal";
 
 export default function PharmacyItems() {
   const { isLoading, data: pharmacyItems, error, } = useFetch(`http://localhost:8000/medicines`);

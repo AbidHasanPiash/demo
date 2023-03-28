@@ -3,10 +3,11 @@ import Login from "./auth/Login";
 import Signup from "./auth/Signup";
 import ForgotPassword from "./auth/ForgotPassword";
 import Home from "./pages/Home";
-import Dashboard from "./pages/Dashboard";
-import PharmacyItems from "./pages/PharmacyItems";
-import ChartOfAccount from "./pages/ChartOfAccount";
+import Dashboard from "./pages/dashContent/Dashboard";
+import PharmacyItems from "./pages/pharmacyContent/PharmacyItems";
+import ChartOfAccount from "./pages/coaContent/ChartOfAccount";
 import Report from "./pages/Report";
+import NonPharmacy from "./pages/NonPharmacy";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
             <Route exact  path="/report" element={<Report/>} />
             <Route exact  path="/chartofaccount" element={<ChartOfAccount/>} />
             <Route exact  path="/pharmacy" element={<PharmacyItems/>} />
-            <Route exact  path="/non-pharmacy" element={<div>non-pharmacy</div>} />
+            <Route exact  path="/non-pharmacy" element={<NonPharmacy/>} />
             <Route exact  path="/order" element={<div>order</div>} />
             <Route exact  path="/purchase" element={<div>purchase</div>} />
             <Route exact  path="/category" element={<div>category</div>} />

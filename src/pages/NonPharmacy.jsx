@@ -8,7 +8,7 @@ export default function NonPharmacy() {
           .then((response) => response.json())
           .then((data) => setData(data))
           .catch((error) => console.error(error));
-    }, []);
+    }, [endpoint]);
     console.log(data["children"][1]["children"][0].name);
   return (
     <div>

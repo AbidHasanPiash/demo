@@ -6,14 +6,14 @@
       "name": "C",
       "size": "",
       "date": "02/19/2010",
-      "children": [
+      "subRows": [
         {
           "id": 11,
           "level": 2,
           "name": "Program Files",
           "size": "120MB",
           "date": "03/20/2010",
-          "children": [
+          "subRows": [
             {
               "id": 111,
               "level": 3,
@@ -21,7 +21,7 @@
               "size": "",
               "date": "01/13/2010",
               "state": "closed",
-              "children": [
+              "subRows": [
                 {
                   "id": 1111,
                   "level": 4,
@@ -45,7 +45,7 @@
               "size": "",
               "date": "01/13/2010",
               "state": "closed",
-              "children": [
+              "subRows": [
                 {
                   "id": 1121,
                   "level": 4,
@@ -77,7 +77,7 @@
           "name": "eclipse",
           "size": "",
           "date": "01/20/2010",
-          "children": [
+          "subRows": [
             {
               "id": 121,
               "level": 3,

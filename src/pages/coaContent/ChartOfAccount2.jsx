@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import CoaTable from "./CoaTable";
 
 export default function ChartOfAccount2() {
-  const columns = React.useMemo(
+  const columns = useMemo(
     () => [
       {
         // Build our expander column
@@ -172,13 +172,26 @@ export default function ChartOfAccount2() {
         .then((data) => setMyData(data))
         .catch((error) => console.error(error));
   }, [endpoint]);
-
-  const data = React.useMemo(() => mydata, [mydata]);
+  const data = useMemo(() => mydata, [mydata]);
+  const updateMyData = (rowIndex, columnId, value) => {
+    // We also turn on the flag to not reset the page
+    setMyData(old =>
+      old.map((row, index) => {
+        if (index === rowIndex) {
+          return {
+            ...old[rowIndex],
+            [columnId]: value,
+          }
+        }
+        return row
+      })
+    )
+  }
   return (
     <div className="text-lg">
       <h1>data</h1>
       <div className="w-3/4 mt-20">
-        {data && <CoaTable columns={columns} data={data} />}
+        {data && <CoaTable columns={columns} data={data} updateMyData={updateMyData}/>}
       </div>
     </div>
   );

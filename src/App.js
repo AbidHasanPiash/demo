@@ -5,7 +5,7 @@ import ForgotPassword from "./auth/ForgotPassword";
 import Home from "./pages/Home";
 import Dashboard from "./pages/dashContent/Dashboard";
 import PharmacyItems from "./pages/pharmacyContent/PharmacyItems";
-import ChartOfAccount2 from "./pages/coaContent/ChartOfAccount2";
+import ChartOfAccount from "./pages/coaContent/ChartOfAccount";
 import Report from "./pages/Report";
 import NonPharmacy from "./pages/NonPharmacy";
 
@@ -20,7 +20,7 @@ function App() {
           <Route path="/" element={<Home/>}>
             <Route index element={<Dashboard/>} />
             <Route exact  path="/report" element={<Report/>} />
-            <Route exact  path="/chartofaccount" element={<ChartOfAccount2/>} />
+            <Route exact  path="/chartofaccount" element={<ChartOfAccount/>} />
             <Route exact  path="/pharmacy" element={<PharmacyItems/>} />
             <Route exact  path="/non-pharmacy" element={<NonPharmacy/>} />
             <Route exact  path="/order" element={<div>order</div>} />

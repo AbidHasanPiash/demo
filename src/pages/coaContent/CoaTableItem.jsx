@@ -11,7 +11,7 @@ export default function CoaTableItem({item, editable, selectedRow, handleSelecte
                         ${item.level === 2  && 'ml-6'}
                         ${item.level === 3  && 'ml-9'}
                         ${item.level === 4  && 'ml-12'}`
-  if (item.children){
+  if (item.subRows){
     return(
         <React.Fragment>
             <tr className={`${selectedRow === item.id ? 'bg-yellow-300':'bg-white'}`}>
@@ -33,10 +33,10 @@ export default function CoaTableItem({item, editable, selectedRow, handleSelecte
                 <td className="px-6 whitespace-nowrap">{item.date}</td>
                 <td className="px-6 whitespace-nowrap">{item.level}</td>
             </tr>
-            {expand && item.children.map((children, index)=>(
+            {expand && item.subRows.map((subRows, index)=>(
               <CoaTableItem 
                 key={index} 
-                item = {children} 
+                item = {subRows} 
                 editable={editable}
                 selectedRow={selectedRow} 
                 handleSelectedRow={handleSelectedRow}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useTable, useExpanded } from "react-table";
+import { useTable, useExpanded, useSortBy, useGlobalFilter, useFilters } from "react-table";
+import FilterGlobal from "./FilterGlobal";
 
 export default function CoaTable({ columns, data, updateMyData }) {
     // Create an editable cell renderer
@@ -39,7 +40,8 @@ export default function CoaTable({ columns, data, updateMyData }) {
         headerGroups,
         rows,
         prepareRow,
-        state: { expanded },
+        state: { expanded, globalFilter },
+        setGlobalFilter,
     } = useTable(
         {
             columns,
@@ -47,11 +49,15 @@ export default function CoaTable({ columns, data, updateMyData }) {
             defaultColumn,
             updateMyData,
         },
-        useExpanded // Use the useExpanded plugin hook
+        useFilters,
+        useGlobalFilter,
+        useSortBy,
+        useExpanded, // Use the useExpanded plugin hook
     );
 
     return (
         <>
+            <FilterGlobal filter={globalFilter} setFilter={setGlobalFilter}/>
             <table
                 {...getTableProps()}
                 className="min-w-full table-fixed border-collapse divide-y divide-gray-200"
@@ -61,10 +67,19 @@ export default function CoaTable({ columns, data, updateMyData }) {
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column) => (
                                 <th
-                                    {...column.getHeaderProps()}
+                                    {...column.getHeaderProps(column.getSortByToggleProps())}
                                     className="w-fit px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                 >
                                     {column.render("Header")}
+                                    {/* Add a sort direction indicator */}
+                                    <span>
+                                        {column.isSorted
+                                        ? column.isSortedDesc
+                                            ? ' 🔽'
+                                            : ' 🔼'
+                                        : ''}
+                                    </span>
+                                    <div>{column.canFilter ? column.render('Filter'):null}</div>
                                 </th>
                             ))}
                         </tr>

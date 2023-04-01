@@ -3,8 +3,8 @@ import {FiShoppingCart} from "react-icons/fi"
 import {HiArrowCircleRight} from "react-icons/hi"
 import {BiPurchaseTagAlt} from "react-icons/bi"
 import {MdOutlineAssignmentReturned, MdAddTask} from "react-icons/md"
-import SaleUpdate from "./dashContent/SaleUpdate";
-import SalesmanPerSale from "./dashContent/SalesmanPerSale";
+import SaleUpdate from "./SaleUpdate";
+import SalesmanPerSale from "./SalesmanPerSale";
 
 export default function Dashboard() {
   return (

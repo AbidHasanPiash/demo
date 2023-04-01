@@ -53,6 +53,7 @@ export default function Sidebar({tab, isSidebarOpen}) {
     { id:1, name:'Dashboard', link:'/', icon:<RxDashboard size={22}/> },
     { id:2, name:'Report',  link:'/report', icon:<TbReportSearch size={22}/> },
     { id:3, name:'Chart of Account',  link:'/chartofaccount', icon:<CgListTree size={22}/> },
+    { id:3, name:'Chart of Account View',  link:'/chartofaccountview', icon:<CgListTree size={22}/> },
     { id:4, name:'Products', icon:<TbBrandProducthunt size={22}/>, 
       subItems:[
         {id:1, name:'Pharmacy', link:'/pharmacy',  icon:<GiMedicines size={22}/>},

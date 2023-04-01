@@ -3,12 +3,12 @@ import Login from "./auth/Login";
 import Signup from "./auth/Signup";
 import ForgotPassword from "./auth/ForgotPassword";
 import Home from "./pages/Home";
-import Dashboard from "./pages/dashContent/Dashboard";
+import Dashboard from "./pages/dashboard/Dashboard";
 import PharmacyItems from "./pages/pharmacyContent/PharmacyItems";
-import ChartOfAccountView from "./pages/coaContentView/ChartOfAccountView";
-import ChartOfAccount from "./pages/coaContent/ChartOfAccount";
+import ChartOfAccountView from "./pages/chartOfAccountView/ChartOfAccountView";
+import ChartOfAccount from "./pages/chartOfAccount/ChartOfAccount";
 import Report from "./pages/Report";
-import NonPharmacy from "./pages/NonPharmacy";
+import NonPharmacy from "./pages/nonPharmacy/NonPharmacy";
 
 function App() {
   return (

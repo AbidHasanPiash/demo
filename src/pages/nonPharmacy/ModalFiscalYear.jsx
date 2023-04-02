@@ -33,6 +33,11 @@ export default function ModalFiscalYear({onClose}) {
   };
   const textField = `flex items-center justify-center space-x-4 mb-6`;
   const errorField = `absolute -bottom-5 left-0 underline text-red-500`;
+  const checkField = `relative appearance-none inline-block h-[30px] w-[54px] border-2 border-blue-500
+                    cursor-pointer rounded-full bg-slate-300 shadow-xl transition-all
+                    after:content-[''] after:absolute after:top-[1px] after:left-[1px]
+                    after:h-6 after:w-6 after:rounded-full after:bg-white after:shadow-sm
+                    after:transition-all checked:bg-blue-500 checked:after:translate-x-6`
   return (
     <div className='w-full h-full backdrop-blur-sm fixed top-0 inset-x-0 flex items-center justify-center'>
       <div className='w-fit h-fit bg-blue-200 border border-black shadow-xl rounded-md'>
@@ -73,22 +78,7 @@ export default function ModalFiscalYear({onClose}) {
               </div>
               <div className={textField}>
                 <label htmlFor="active">Active</label>
-                  <Field type="checkbox" id="active" name="active"
-                    className="relative appearance-none inline-block h-[30px] w-[54px] border-2 border-blue-500
-                    cursor-pointer rounded-full bg-slate-300 shadow-xl transition-all
-                    after:content-['']
-                    after:absolute
-                    after:top-[1px]
-                    after:left-[1px]
-                    after:h-6
-                    after:w-6
-                    after:rounded-full
-                    after:bg-white
-                    after:shadow-sm
-                    after:transition-all
-                    checked:bg-blue-500
-                    checked:after:translate-x-6"
-                  />
+                  <Field type="checkbox" id="active" name="active" className={checkField}/>
               </div>
               <button className='border px-3 py-1 text-lg text-white bg-blue-500 hover:bg-blue-600 rounded-md' type="submit">Save</button>
             </Form>

@@ -24,9 +24,9 @@ export default function NonPharmacy() {
         className='border px-3 py-1 text-lg text-white bg-blue-500 hover:bg-blue-600 rounded-md'>
         Chart of Accounts
       </button>
-      {isModalFiscalYearOpen && <ModalFiscalYear onClose={()=>setModalFiscalYearOpen(false)} />}
-      {isModalFiscalMonthOpen && <ModalFiscalMonth onClose={()=>setModalFiscalMonthOpen(false)} />}
-      {isModalChartOfAccount && <ModalChartOfAccount onClose={()=>setModalChartOfAccountOpen(false)} />}
+      {isModalFiscalYearOpen && <ModalFiscalYear isOpen={isModalFiscalYearOpen} onClose={()=>setModalFiscalYearOpen(false)} />}
+      {isModalFiscalMonthOpen && <ModalFiscalMonth isOpen={isModalFiscalMonthOpen} onClose={()=>setModalFiscalMonthOpen(false)} />}
+      {isModalChartOfAccount && <ModalChartOfAccount isOpen={isModalChartOfAccount} onClose={()=>setModalChartOfAccountOpen(false)} />}
     </div>
   )
 }

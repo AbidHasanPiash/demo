@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import {RiCloseFill} from 'react-icons/ri'
 
-export default function ModalChartOfAccount({onClose}) {
+export default function ModalChartOfAccount({isOpen,onClose}) {
+  useEffect(() => {
+      function handleKeyDown(event) {
+      if (event.key === "Escape") {
+          onClose();
+      }
+      }
+
+      if (isOpen) {
+      document.addEventListener("keydown", handleKeyDown);
+      }
+
+      return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      };
+  }, [isOpen, onClose]);
     const selectParentCoA = [
         {key:'select a option', value:''},
         {key:'option1', value:'option1'},

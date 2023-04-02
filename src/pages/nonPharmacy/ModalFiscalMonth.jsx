@@ -1,69 +1,84 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import {RiCloseFill} from 'react-icons/ri'
 
-export default function ModalFiscalMonth({onClose}) {
-  const selectYear = [
-      {key:'select a year', value:''},
-      {key:'year1', value:'year1'},
-      {key:'year2', value:'year2'},
-      {key:'year3', value:'year3'},
-  ]
-  const initialValues = { 
-    selectyear: '', 
-    monthname: '', 
-    monthcode: '', 
-    startdate: '', 
-    enddate: '', 
-    openingdate: '', 
-    closingdate: '', 
-    reopeningdate: '', 
-    reclosingdate: '', 
-    isopen: false ,
-  };
-  const validate = (values) => {
-    const errors = {};
-    if (!values.selectyear) {
-      errors.selectyear = 'Required';
-    }
-    if (!values.monthname) {
-      errors.monthname = 'Required';
-    }
-    if (!values.monthcode) {
-      errors.monthcode = 'Required';
-    }
-    if (!values.startdate) {
-      errors.startdate = 'Required';
-    }
-    if (!values.enddate) {
-      errors.enddate = 'Required';
-    }
-    if (!values.openingdate) {
-      errors.openingdate = 'Required';
-    }
-    if (!values.closingdate) {
-      errors.closingdate = 'Required';
-    }
-    if (!values.reopeningdate) {
-      errors.reopeningdate = 'Required';
-    }
-    if (!values.reclosingdate) {
-      errors.reclosingdate = 'Required';
-    }
-    return errors;
-  };
-  const onSubmit = (values) => {
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-    }, 400);
-  };
-  const textField = `flex items-center justify-center space-x-4 mb-6`;
-  const errorField = `absolute -bottom-5 left-0 underline text-red-500`;
-  const checkField = `relative appearance-none inline-block h-[30px] w-[54px] border-2 border-blue-500
-                    cursor-pointer rounded-full bg-slate-300 shadow-xl transition-all
-                    after:content-[''] after:absolute after:top-[1px] after:left-[1px]
-                    after:h-6 after:w-6 after:rounded-full after:bg-white after:shadow-sm
-                    after:transition-all checked:bg-blue-500 checked:after:translate-x-6`
+export default function ModalFiscalMonth({isOpen,onClose}) {
+    useEffect(() => {
+        function handleKeyDown(event) {
+        if (event.key === "Escape") {
+            onClose();
+        }
+        }
+
+        if (isOpen) {
+        document.addEventListener("keydown", handleKeyDown);
+        }
+
+        return () => {
+        document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [isOpen, onClose]);
+    const selectYear = [
+        {key:'select a year', value:''},
+        {key:'year1', value:'year1'},
+        {key:'year2', value:'year2'},
+        {key:'year3', value:'year3'},
+    ]
+    const initialValues = { 
+        selectyear: '', 
+        monthname: '', 
+        monthcode: '', 
+        startdate: '', 
+        enddate: '', 
+        openingdate: '', 
+        closingdate: '', 
+        reopeningdate: '', 
+        reclosingdate: '', 
+        isopen: false ,
+    };
+    const validate = (values) => {
+        const errors = {};
+        if (!values.selectyear) {
+        errors.selectyear = 'Required';
+        }
+        if (!values.monthname) {
+        errors.monthname = 'Required';
+        }
+        if (!values.monthcode) {
+        errors.monthcode = 'Required';
+        }
+        if (!values.startdate) {
+        errors.startdate = 'Required';
+        }
+        if (!values.enddate) {
+        errors.enddate = 'Required';
+        }
+        if (!values.openingdate) {
+        errors.openingdate = 'Required';
+        }
+        if (!values.closingdate) {
+        errors.closingdate = 'Required';
+        }
+        if (!values.reopeningdate) {
+        errors.reopeningdate = 'Required';
+        }
+        if (!values.reclosingdate) {
+        errors.reclosingdate = 'Required';
+        }
+        return errors;
+    };
+    const onSubmit = (values) => {
+        setTimeout(() => {
+        alert(JSON.stringify(values, null, 2));
+        }, 400);
+    };
+    const textField = `flex items-center justify-center space-x-4 mb-6`;
+    const errorField = `absolute -bottom-5 left-0 underline text-red-500`;
+    const checkField = `relative appearance-none inline-block h-[30px] w-[54px] border-2 border-blue-500
+                        cursor-pointer rounded-full bg-slate-300 shadow-xl transition-all
+                        after:content-[''] after:absolute after:top-[1px] after:left-[1px]
+                        after:h-6 after:w-6 after:rounded-full after:bg-white after:shadow-sm
+                        after:transition-all checked:bg-blue-500 checked:after:translate-x-6`
   return (
     <div className='w-full h-full backdrop-blur-sm fixed top-0 inset-x-0 flex items-center justify-center'>
       <div className='w-fit h-fit bg-blue-200 border border-black shadow-xl rounded-md'>

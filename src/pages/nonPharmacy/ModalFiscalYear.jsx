@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import {RiCloseFill} from 'react-icons/ri'
 
-export default function ModalFiscalYear({onClose}) {
+export default function ModalFiscalYear({isOpen,onClose}) {
+  useEffect(() => {
+      function handleKeyDown(event) {
+      if (event.key === "Escape") {
+          onClose();
+      }
+      }
+
+      if (isOpen) {
+      document.addEventListener("keydown", handleKeyDown);
+      }
+
+      return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      };
+  }, [isOpen, onClose]);
   const initialValues = { 
     yearname: '', 
     yearcode: '' ,

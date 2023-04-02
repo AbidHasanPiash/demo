@@ -67,53 +67,53 @@ export default function ModalChartOfAccount({onClose}) {
                 <div className={textField}>
                     <label htmlFor="coaname">AoC Name:</label>
                     <div className='relative'>
-                    <Field type="text" id="coaname" name="coaname" className="w-52"/>
-                    <span className={errorField}><ErrorMessage name="coaname"/></span>
+                        <Field type="text" id="coaname" name="coaname" className="w-52"/>
+                        <span className={errorField}><ErrorMessage name="coaname"/></span>
                     </div>
                 </div>
                 <div className={textField}>
                     <label htmlFor="coacode">AoC Code:</label>
                     <div className='relative'>
-                    <Field type="text" id="coacode" name="coacode" className="w-52"/>
-                    <span className={errorField}><ErrorMessage name="coacode"/></span>
+                        <Field type="text" id="coacode" name="coacode" className="w-52"/>
+                        <span className={errorField}><ErrorMessage name="coacode"/></span>
                     </div>
                 </div>
                 <div className={textField}>
                     <label htmlFor="selectparentcoa">Parent CoA:</label>
                     <div className='relative'>
-                    <Field as="select" id="selectparentcoa" name="selectparentcoa" className="w-52">
-                        {selectParentCoA.map(option=>{
-                            return( <option key={option.value} value={option.value}> {option.key}</option>
-                            )
-                        })}
-                    </Field>
-                    <span className={errorField}><ErrorMessage name="selectparentcoa"/></span>
+                        <Field as="select" id="selectparentcoa" name="selectparentcoa" className="w-52">
+                            {selectParentCoA.map(option=>{
+                                return( <option key={option.value} value={option.value}> {option.key}</option>
+                                )
+                            })}
+                        </Field>
+                        <span className={errorField}><ErrorMessage name="selectparentcoa"/></span>
                     </div>
                 </div>
                 <div className={textField}>
                     <label htmlFor="selectcoatype">CoA Type:</label>
                     <div className='relative'>
-                    <Field as="select" id="selectcoatype" name="selectcoatype" className="w-52">
-                        {selectCoAType.map(option=>{
-                            return( <option key={option.value} value={option.value}> {option.key}</option>
-                            )
-                        })}
-                    </Field>
-                    <span className={errorField}><ErrorMessage name="selectcoatype"/></span>
+                        <Field as="select" id="selectcoatype" name="selectcoatype" className="w-52">
+                            {selectCoAType.map(option=>{
+                                return( <option key={option.value} value={option.value}> {option.key}</option>
+                                )
+                            })}
+                        </Field>
+                        <span className={errorField}><ErrorMessage name="selectcoatype"/></span>
                     </div>
                 </div>
                 <div className={textField}>
                     <label htmlFor="description">Description:</label>
                     <div className='relative'>
-                    <Field as="textarea" id="description" name="description" className="w-52"/>
-                    <span className={errorField}><ErrorMessage name="description"/></span>
+                        <Field as="textarea" id="description" name="description" className="w-52"/>
+                        <span className={errorField}><ErrorMessage name="description"/></span>
                     </div>
                 </div>
                 <div className={textField}>
                     <label htmlFor="active">Active</label>
                     <Field type="checkbox" id="active" name="active" className={checkField}/>
                 </div>
-              <button className='border px-3 py-1 text-lg text-white bg-blue-500 hover:bg-blue-600 rounded-md' type="submit">Save</button>
+                <button className='border px-3 py-1 text-lg text-white bg-blue-500 hover:bg-blue-600 rounded-md' type="submit">Save</button>
             </Form>
           </Formik>
         </div>

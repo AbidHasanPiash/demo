@@ -78,7 +78,7 @@ export default function ModalFiscalYear({onClose}) {
               </div>
               <div className={textField}>
                 <label htmlFor="active">Active</label>
-                  <Field type="checkbox" id="active" name="active" className={checkField}/>
+                <Field type="checkbox" id="active" name="active" className={checkField}/>
               </div>
               <button className='border px-3 py-1 text-lg text-white bg-blue-500 hover:bg-blue-600 rounded-md' type="submit">Save</button>
             </Form>

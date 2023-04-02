@@ -8,7 +8,7 @@ export default function ModalFiscalYear({onClose}) {
     yearcode: '' ,
     startdate: '' ,
     enddate: '' ,
-    activecheckbox: false ,
+    active: false ,
   };
   const validate = (values) => {
     const errors = {};
@@ -71,9 +71,9 @@ export default function ModalFiscalYear({onClose}) {
                   <span className={errorField}><ErrorMessage name="enddate"/></span>
                 </div>
               </div>
-              <div className={`${textField} items-start `}>
-                <label htmlFor="activecheckbox">Active</label>
-                  <Field type="checkbox" id="activecheckbox" name="activecheckbox"
+              <div className={textField}>
+                <label htmlFor="active">Active</label>
+                  <Field type="checkbox" id="active" name="active"
                     className="relative appearance-none inline-block h-[30px] w-[54px] border-2 border-blue-500
                     cursor-pointer rounded-full bg-slate-300 shadow-xl transition-all
                     after:content-['']

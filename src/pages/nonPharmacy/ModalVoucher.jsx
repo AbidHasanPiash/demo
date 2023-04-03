@@ -57,17 +57,17 @@ export default function ModalVoucher({isOpen,onClose}) {
         title : Yup.string().required('required !'),
         head : Yup.string().required('required !'),
         dr : Yup.object({
-            gl : Yup.string().required('Required'),
-            subgl : Yup.string().required('Required'),
-            discription : Yup.string().required('Required'),
-            amount : Yup.string().required('Required'),
-            order : Yup.string().required('Required'),
+            gl : Yup.string().required('Required !'),
+            subgl : Yup.string().required('Required !'),
+            discription : Yup.string().required('Required !'),
+            amount : Yup.string().required('Required !'),
+            order : Yup.string().required('Required !'),
         }),
     });
     const onSubmit = (values) => {
         setTimeout(() => {
         alert(JSON.stringify(values, null, 2));
-        }, 400);
+        }, 200);
     };
     const textField = `flex items-center justify-between px-10 space-x-2 mb-6`;
     const errorField = `absolute -bottom-5 left-0 underline text-red-500`;

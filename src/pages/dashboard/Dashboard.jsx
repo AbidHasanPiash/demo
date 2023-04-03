@@ -73,10 +73,11 @@ export default function Dashboard() {
         </div>
       </div>
       {/* sale update */}
-      <div className="sm:flex">
+      <div className="flex sm:grid sm:grid-cols-2">
         <SaleUpdate/>
-        <SalesmanPerSale/>
+        <SaleUpdate/>
       </div>
+    <SalesmanPerSale/>
       
     </div>
   );

@@ -71,7 +71,7 @@ export default function Sidebar({tab, isSidebarOpen}) {
     { id:10, name:'Employe', link:'/employe', icon:<BsPeople size={22}/> }
   ]
   return (
-    <aside className={`bg-gray-800 text-gray-300 duration-300 ${isSidebarOpen? 'w-64' : 'w-20'} h-screen px-2`}>
+    <aside className={`bg-gray-800 text-gray-300 duration-300 ${isSidebarOpen? 'w-64' : 'w-20'} h-full px-2`}>
       <div>
         {/* Company profile */}
         <div className={`flex items-center justify-start border-b border-gray-500 space-x-2 p-3 pl-3`}>

@@ -69,7 +69,6 @@ export default function ModalVoucher({isOpen,onClose}) {
         alert(JSON.stringify(values, null, 2));
         }, 200);
     };
-    console.log(validationSchema);
     const textField = `flex items-center justify-between px-10 space-x-2 mb-6`;
     const errorField = `absolute -bottom-5 left-0 underline text-red-500`;
     const checkField = `relative appearance-none inline-block h-[30px] w-[54px] border-2 border-blue-500

@@ -3,8 +3,9 @@ import {FiShoppingCart} from "react-icons/fi"
 import {HiArrowCircleRight} from "react-icons/hi"
 import {BiPurchaseTagAlt} from "react-icons/bi"
 import {MdOutlineAssignmentReturned, MdAddTask} from "react-icons/md"
-import SaleUpdate from "./SaleUpdate";
+import SaleUpdateWeek from "./SaleUpdateWeek";
 import SalesmanPerSale from "./SalesmanPerSale";
+import SaleUpdateMonth from "./SaleUpdateMonth";
 
 export default function Dashboard() {
   return (
@@ -73,9 +74,9 @@ export default function Dashboard() {
         </div>
       </div>
       {/* sale update */}
-      <div className="flex sm:grid sm:grid-cols-2">
-        <SaleUpdate/>
-        <SaleUpdate/>
+      <div className="flex sm:grid sm:grid-cols-2 gap-3 m-3">
+        <SaleUpdateWeek/>
+        <SaleUpdateMonth/>
       </div>
     <SalesmanPerSale/>
       

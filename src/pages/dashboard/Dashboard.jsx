@@ -4,14 +4,14 @@ import {HiArrowCircleRight} from "react-icons/hi"
 import {BiPurchaseTagAlt} from "react-icons/bi"
 import {MdOutlineAssignmentReturned, MdAddTask} from "react-icons/md"
 import SaleUpdateWeek from "./SaleUpdateWeek";
-import SalesmanPerSale from "./SalesmanPerSale";
 import SaleUpdateMonth from "./SaleUpdateMonth";
+import SaleUpdateNow from "./SaleUpdateNow";
 
 export default function Dashboard() {
   return (
     <div className="">
         {/* Card */}
-      <div className="grid lg:grid-cols-4 grid-cols-2 gap-3 p-3">
+      <div className="grid xl:grid-cols-4 grid-cols-2 gap-3 p-3">
         <div className="bg-sky-500 rounded-lg text-white shadow">
            <div>
                 <div className="group flex items-center justify-between p-2">
@@ -74,11 +74,11 @@ export default function Dashboard() {
         </div>
       </div>
       {/* sale update */}
-      <div className="flex sm:grid sm:grid-cols-2 gap-3 m-3">
+      <div className="grid xl:grid-cols-2 grid-cols-1 gap-x-3 gap-y-6 m-3 mb-20">
         <SaleUpdateWeek/>
         <SaleUpdateMonth/>
+        <SaleUpdateNow/>
       </div>
-    <SalesmanPerSale/>
       
     </div>
   );

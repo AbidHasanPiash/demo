@@ -54,10 +54,10 @@ export default function Sidebar({tab, isSidebarOpen}) {
     { id:2, name:'Report',  link:'/report', icon:<TbReportSearch size={22}/> },
     { id:3, name:'Chart of Account',  link:'/chartofaccount', icon:<CgListTree size={22}/> },
     { id:3, name:'Chart of Account View',  link:'/chartofaccountview', icon:<CgListTree size={22}/> },
-    { id:4, name:'Products', icon:<TbBrandProducthunt size={22}/>, 
+    { id:4, name:'Products', message:'new', icon:<TbBrandProducthunt size={22}/>, 
       subItems:[
         {id:1, name:'Pharmacy', link:'/pharmacy',  icon:<GiMedicines size={22}/>},
-        {id:2, name:'Non-Pharmacy', link:'/non-pharmacy', icon:<TbBabyBottle size={22}/>}
+        {id:2, name:'Non-Pharmacy', message:'new', link:'/non-pharmacy', icon:<TbBabyBottle size={22}/>}
       ]},
     { id:5, name:'Order', link:'/order', icon:<MdOutlinePlaylistAddCheckCircle size={22}/> },
     { id:6, name:'Purchase', link:'/purchase', icon:<HiOutlineShoppingBag size={22}/> },
